@@ -16,3 +16,6 @@ obj/
 # Compiled binaries
 *.dll
 *.exe
+
+# Generalized files handled on remote
+README.md
