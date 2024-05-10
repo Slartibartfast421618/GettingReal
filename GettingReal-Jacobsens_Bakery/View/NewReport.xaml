@@ -1,0 +1,27 @@
+﻿<Window x:Class="GettingReal_Jacobsens_Bakery.View.NewReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GettingReal_Jacobsens_Bakery.View"
+        mc:Ignorable="d"
+        Title="NewReport" Height="450" Width="600">
+    <Grid Height="434" Width="600">
+
+        <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FFDDDDED">
+            <Label FontSize="24" Content="Ny rapport" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="44" Width="200" Foreground="#FF545461"/>
+            <Image Margin="0,10,10,0" Source="/img/jb_logo.png" Stretch="Fill" Height="44" Width="88" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        </Grid>
+        
+        <Grid Height="314" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+        </Grid>
+
+        <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#FFDDDDED">
+            <Button x:Name="btnSave" Content="Gem rapport" Height="40" Width="150" Margin="275,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnSave_Click" FontSize="20" FontFamily="Bahnschrift Light" BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+            <Button x:Name="btnBack" Content="Tilbage" Height="40" Width="150" Margin="440,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnBack_Click" FontSize="20" FontFamily="Bahnschrift Light" BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+
+        </Grid>
+
+    </Grid>
+</Window>

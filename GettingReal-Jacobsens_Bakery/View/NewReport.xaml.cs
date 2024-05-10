@@ -15,28 +15,13 @@ using System.Windows.Shapes;
 namespace GettingReal_Jacobsens_Bakery.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NewReport.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NewReport : Window
     {
-        public MainWindow()
+        public NewReport()
         {
             InitializeComponent();
-        }
-
-        private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void btnNewReport_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
