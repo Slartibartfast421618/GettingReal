@@ -28,7 +28,7 @@ Pushes don't have to happen every commit, but should be often enough that others
 1) Add your changes to staging. There's a couple of ways to do this:\
      git add -A  _Adds everything_\
      git add .  _Adds everything in currently accessed folder and subfolders_\
-     git add -u  _Adds all updated/changed files_\
+     git add -u  _Adds all updated/changed files. This does_ **NOT** _add new files!!_\
      git add FILE_NAME.EXT  _Adds specifically FILE_NAME.EXT_\
 2) Commit changes. Make sure to give a descriptive message!\
      git commit -m "A perfect description of the changes made, without being too lo-"
@@ -42,10 +42,14 @@ If you don't want your changes, use 'git stash' to store them in a corner, never
 2) Select 'Open Git Bash here' and type in the following commands...
 3) First fetch the data\
      git fetch
-4) Go to the desired branch\
+4) Go to the desired branch (If you've accessed this branch before)\
      git switch BRANCH_NAME
 5) Pull new data (If you've accessed this branch before)\
-     git pull
+     git pull\
+\
+**IF YOU NEED A NEW BRANCH DOWN**\
+   git checkout -b BRANCH_NAME remotes/origin/BRANCH_NAME\
+(Reminder to replace BRANCH_NAME with actual the name of the actual branch)
 
 ### Merge stable branches onto master
 _If A is for apple, and B is for banana, what is C for? Plastic explosive._
