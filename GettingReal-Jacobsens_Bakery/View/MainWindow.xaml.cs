@@ -25,17 +25,17 @@ namespace GettingReal_Jacobsens_Bakery.View
         }
 
         private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        {   // Currently 5 lines - Start, End, P.Order, WareNum, TotalBoxes
 
         }
 
         private void btnNewReport_Click(object sender, RoutedEventArgs e)
-        {
+        {   // Change window to NewReport
 
         }
 
         private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)
-        {
+        {   // Make sure everything is saved to file before closing window
 
         }
     }
