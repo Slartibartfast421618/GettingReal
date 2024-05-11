@@ -6,14 +6,30 @@ using System.Threading.Tasks;
 
 namespace GettingReal_Jacobsens_Bakery.Model
 {
+    public enum Team
+    {
+        red,
+        white,
+        blue
+    }
+    public enum Line
+    {
+        one,
+        two,
+        three,
+        four
+    }
     public class ProductionTeam
     {
 
         private DateTime _date;
         private Line _prodLine;
         private Team _prodTeam;
-        private DateTime _duration;
+        private TimeSpan _downtimeDuration;
         public List<ProductionProcess> PPRepo;
+        public Employee Employee = new Employee();
+        public ActiveRecipe Recipe = new ActiveRecipe();
+        
 
 
         public DateTime Date
@@ -40,31 +56,32 @@ namespace GettingReal_Jacobsens_Bakery.Model
 
 
 
-        public DateTime Duration
+        public TimeSpan DowntimeDuration
         {
-            get { return _duration; }
-            set { _duration = value; }
+            get { return _downtimeDuration; }
         }
 
         public void AddProductionProcess(ProductionProcess productionProcess)
         {
-           PPRepo.Add(productionProcess); 
+           PPRepo.Add(productionProcess);
+            foreach (var process in PPRepo)
+            {
+                _downtimeDuration = _downtimeDuration + process.DowntimeDuration();
+            }
         }
 
-        public ProductionProcess GetProductionProcess(ProductionProcess productionProcess)
+        public ProductionProcess GetProductionProcess()
         {
             foreach (ProductionProcess productionProcessPeriod in PPRepo)
             {
-                if (productionProcessPeriod == productionProcess) { }
+                return productionProcessPeriod;
             }
             return null;
         }
 
         // Skal dette være ToString? 
-        public void Team()
-        {
-
-        }
+      
+        
 
     }
 }

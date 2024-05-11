@@ -8,6 +8,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
 {
     public class ActiveRecipe
     {
+		public Production Production = new Production();
 		private int _recipeId;
 		private int _crumbles;
 		private int _spillage;
@@ -20,8 +21,8 @@ namespace GettingReal_Jacobsens_Bakery.Model
 
 		public int Crumbles
 		{
-			get { return _recipeId; }
-			set { _recipeId = value; }
+			get { return _crumbles; }
+			set { _crumbles = value; }
 		}
 
 		public int Spillage
@@ -29,12 +30,6 @@ namespace GettingReal_Jacobsens_Bakery.Model
 			get { return _spillage; }
 			set { _spillage = value; }
 		}
-
-		public ActiveRecipe()
-		{
-         
-        }
-
 
 	}
 }
