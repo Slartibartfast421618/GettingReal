@@ -1,0 +1,15 @@
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\bin\Debug\GettingRealJacobsensBakery.exe.config
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\bin\Debug\GettingRealJacobsensBakery.exe
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\bin\Debug\GettingRealJacobsensBakery.pdb
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery.csproj.AssemblyReference.cache
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\View\MainWindow.g.cs
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\App.g.cs
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery_MarkupCompile.cache
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery_MarkupCompile.lref
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\View\MainWindow.baml
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery.g.resources
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery.Properties.Resources.resources
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery.csproj.GenerateResource.cache
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery.csproj.CoreCompileInputs.cache
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery.exe
+C:\Users\pibm9\OneDrive - UCL Erhvervsakademi og Professionshøjskole\Dokumenter\Datamatiker\Programmering\GettingRealJacobsensBakery\obj\Debug\GettingRealJacobsensBakery.pdb
