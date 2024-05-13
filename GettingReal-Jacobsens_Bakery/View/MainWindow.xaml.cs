@@ -19,24 +19,32 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        NewReportWindow newReportWindow;
         public MainWindow()
         {
             InitializeComponent();
+
+            newReportWindow = new NewReportWindow();
         }
 
         private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   // Currently 5 lines - Start, End, P.Order, WareNum, TotalBoxes
+        {   // Reports of this team, this shift -- Currently 5 lines: Start, End, P.Order, WareNum, TotalBoxes
 
         }
 
         private void btnNewReport_Click(object sender, RoutedEventArgs e)
         {   // Change window to NewReport
+            newReportWindow.Show();
 
+            // Now it just needs to know which data to read, if selected from the list,
+            // or that it needs to have new datafields
         }
 
         private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)
         {   // Make sure everything is saved to file before closing window
+            
 
+            Close();
         }
     }
 }
