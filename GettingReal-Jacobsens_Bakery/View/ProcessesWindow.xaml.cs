@@ -32,7 +32,7 @@ namespace GettingReal_Jacobsens_Bakery.View
         }
 
         private void btnAddProcess_Click(object sender, RoutedEventArgs e)
-        {   // Add a blank process
+        {   // Add a blank process, and set it as the active selected item
 
         }
 

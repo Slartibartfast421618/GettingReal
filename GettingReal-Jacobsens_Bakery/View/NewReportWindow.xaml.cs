@@ -20,7 +20,8 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class NewReportWindow : Window
     {
-        ProcessesWindow processesWindow;
+        readonly ProcessesWindow processesWindow;
+
         public NewReportWindow()
         {
             InitializeComponent();
@@ -102,7 +103,7 @@ namespace GettingReal_Jacobsens_Bakery.View
 
 
         private void InitializeTeamsAndLines()
-        {   // Initialize from Team and Line enums! Temporary implementation for now, do foreach in real implementation
+        {   // Initialize from Team and Line enums! Temporary implementation for now, do foreach in proper implementation
             cbTeam.Items.Add("Blå");
             cbTeam.Items.Add("Rød");
             cbTeam.Items.Add("Hvid");

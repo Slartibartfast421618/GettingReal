@@ -19,7 +19,8 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        NewReportWindow newReportWindow;
+        readonly NewReportWindow newReportWindow;
+
         public MainWindow()
         {
             InitializeComponent();
