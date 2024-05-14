@@ -19,13 +19,13 @@ namespace GettingReal_Jacobsens_Bakery.Model
             get { return _procStart; }
             set { _procStart = value; }
         }
-        
+
         public DateTime ProcEnd
         {
             get { return _procEnd; }
             set { _procEnd = value; }
         }
-        
+
         public string Reason
         {
             get { return _reason; }
@@ -35,7 +35,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
 
         public override string ToString()
         {
-            return $"ProductionStart: {_procStart}, ProductionEnd: {_procEnd}, Reason: {_reason}";
+            return $"ProcessStart: {_procStart}, ProcessEnd: {_procEnd}, Reason: {_reason}";
         }
 
         // DownTime er en TimeSpan

@@ -27,9 +27,10 @@ namespace GettingReal_Jacobsens_Bakery.Model
         private Team _prodTeam;
         private TimeSpan _downtimeDuration;
         public List<ProductionProcess> PPRepo;
-        public Employee Employee = new Employee();
+        public Employee EmployeeOne = new Employee();
+        public Employee EmployeeTwo = new Employee();
         public ActiveRecipe Recipe = new ActiveRecipe();
-        
+
 
 
         public DateTime Date
@@ -38,15 +39,11 @@ namespace GettingReal_Jacobsens_Bakery.Model
             set { _date = value; }
         }
 
-
-
         public Line ProdLine
         {
             get { return _prodLine; }
             set { _prodLine = value; }
         }
-
-
 
         public Team ProdTeam
         {
@@ -54,16 +51,16 @@ namespace GettingReal_Jacobsens_Bakery.Model
             set { _prodTeam = value; }
         }
 
-
-
         public TimeSpan DowntimeDuration
         {
             get { return _downtimeDuration; }
         }
 
+
+
         public void AddProductionProcess(ProductionProcess productionProcess)
         {
-           PPRepo.Add(productionProcess);
+            PPRepo.Add(productionProcess);
             foreach (var process in PPRepo)
             {
                 _downtimeDuration = _downtimeDuration + process.DowntimeDuration();
@@ -80,8 +77,6 @@ namespace GettingReal_Jacobsens_Bakery.Model
         }
 
         // Skal dette være ToString? 
-      
-        
 
     }
 }
