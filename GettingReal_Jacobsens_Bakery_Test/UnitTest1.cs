@@ -1,6 +1,7 @@
 using GettingReal_Jacobsens_Bakery;
 using GettingReal_Jacobsens_Bakery.ViewModel;
 using GettingReal_Jacobsens_Bakery.Model;
+using System.Security.Cryptography.Pkcs;
 
 namespace GettingReal_Jacobsens_Bakery_Test
 {
@@ -9,17 +10,21 @@ namespace GettingReal_Jacobsens_Bakery_Test
     {
         ProductionReport Report;
 
+        ProductionProcess p1;
+        ProductionProcess p2;
+        PRRepo repo;
+
         [TestInitialize]
         public void SetupForTest()
         {
 
-            ProductionProcess p1 = new ProductionProcess()
+            p1 = new ProductionProcess()
             {
                 ProcStart = DateTime.Parse("14:30:00"),
                 ProcEnd = DateTime.Parse("15:00:00"),
                 Reason = "Omstilling."
             };
-            ProductionProcess p2 = new ProductionProcess()
+            p2 = new ProductionProcess()
             {
                 ProcStart = DateTime.Parse("15:30:00"),
                 ProcEnd = DateTime.Parse("16:30:00"),
@@ -42,7 +47,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
                 ItemId = 220275,
                 Recipe = 381121
             };
-            PRRepo repo = new PRRepo();
+            repo = new PRRepo();
             Report.NewProcess(p1);
             Report.NewProcess(p2);
         }
@@ -91,7 +96,14 @@ namespace GettingReal_Jacobsens_Bakery_Test
         public void TestProdItem()
         {
             Assert.AreEqual(220275, Report.ItemId);
-            Assert.AreEqual(381121, Report.ProdTeam.Recipe.Production.Item.Recipe);
+            Assert.AreEqual(381121, Report.Recipe);
+        }
+        [TestMethod]
+        public void TestProdProc()
+        {
+            Assert.AreEqual(DateTime.Parse("15:00:00"), Report.ProdTeam.PPRepo[0].ProcEnd);
+            Assert.AreEqual(p1.Reason, Report.ProdTeam.PPRepo[0].Reason);
+            Assert.AreEqual(p2.DowntimeDuration(), Report.ProdTeam.PPRepo[1].DowntimeDuration());
         }
     }
 }
