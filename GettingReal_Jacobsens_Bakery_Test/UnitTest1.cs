@@ -32,7 +32,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
                 Team = Team.red,
                 SigOne = "Lars Hansen",
                 SigTwo = "Mette Boldt",
-                Recipe = 381121,
+                RecipeId = 381121,
                 Crumbles = 80,
                 Spillage = 150,
                 ProdStart = DateTime.Parse("14:00:00"),
@@ -40,7 +40,9 @@ namespace GettingReal_Jacobsens_Bakery_Test
                 ProdOrderId = "P101275",
                 BoxesProduced = 300,
                 ItemId = 220275,
+                Recipe = 381121
             };
+            PRRepo repo = new PRRepo();
             Report.NewProcess(p1);
             Report.NewProcess(p2);
         }
@@ -68,7 +70,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
             Report.NewProcess(p3);
 
             // Assert
-            Assert.AreEqual(TimeSpan.Parse("03:30:00"), Report.DowntimeDuration);
+            Assert.AreEqual(TimeSpan.Parse("04:30:00"), Report.DowntimeDuration);
         }
         [TestMethod]
         public void TestActiveRecipe()
@@ -89,7 +91,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         public void TestProdItem()
         {
             Assert.AreEqual(220275, Report.ItemId);
-            Assert.AreEqual(220275, Report.ProdTeam.Recipe.Production.Item.Recipe);
+            Assert.AreEqual(381121, Report.ProdTeam.Recipe.Production.Item.Recipe);
         }
     }
 }

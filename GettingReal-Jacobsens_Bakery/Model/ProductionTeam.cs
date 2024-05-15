@@ -26,7 +26,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
         private Line _prodLine;
         private Team _prodTeam;
         private TimeSpan _downtimeDuration;
-        public List<ProductionProcess> PPRepo;
+        public List<ProductionProcess> PPRepo = new List<ProductionProcess>();
         public Employee EmployeeOne = new Employee();
         public Employee EmployeeTwo = new Employee();
         public ActiveRecipe Recipe = new ActiveRecipe();
@@ -61,6 +61,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
         public void AddProductionProcess(ProductionProcess productionProcess)
         {
             PPRepo.Add(productionProcess);
+            _downtimeDuration = TimeSpan.Parse("00:00:00");
             foreach (var process in PPRepo)
             {
                 _downtimeDuration = _downtimeDuration + process.DowntimeDuration();

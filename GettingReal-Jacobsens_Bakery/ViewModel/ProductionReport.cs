@@ -29,11 +29,11 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.ProdTeam; }
             set { ProdTeam.ProdTeam = value; }
         }
-        public ProductionProcess selectedProcess
-        {
-            get { return selectedProcess; }
-            set { selectedProcess = value; }
-        }
+        public ProductionProcess selectedProcess;
+        //{
+        //    get { return selectedProcess; }
+        //    set { selectedProcess = value; }
+        //}
         public void NewProcess(ProductionProcess process)
         {
             ProdTeam.AddProductionProcess(process);
@@ -43,7 +43,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public string SigOne
         {
             get { return ProdTeam.EmployeeOne.Signature; }
-            set { ProdTeam.EmployeeTwo.Signature = value; }
+            set { ProdTeam.EmployeeOne.Signature = value; }
         }
         public string SigTwo
         {
@@ -58,7 +58,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public int Crumbles
         {
             get { return ProdTeam.Recipe.Crumbles; }
-            set { ProdTeam.Recipe.RecipeId = value; }
+            set { ProdTeam.Recipe.Crumbles = value; }
         }
         private int _spillage;
         public int Spillage
