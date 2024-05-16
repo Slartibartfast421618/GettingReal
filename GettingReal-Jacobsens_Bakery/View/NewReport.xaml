@@ -1,0 +1,121 @@
+﻿<Window x:Class="GettingReal_Jacobsens_Bakery.View.NewReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GettingReal_Jacobsens_Bakery.View"
+        mc:Ignorable="d"
+        Title="NewReport" Height="450" Width="600">
+    <Grid Height="434" Width="600">
+        <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FFDDDDED">
+            <Label FontSize="24" Content="Ny rapport" Margin="10,10,0,0" 
+                   HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="200" 
+                   Foreground="#FF545461"/>
+            <Image Margin="0,10,10,0" Source="/img/jb_logo.png" Stretch="Fill" 
+                   Height="44" Width="88" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        </Grid>
+
+        <Grid Height="314" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox x:Name="cbTeam" Height="40" Width="160" Margin="20,20,0,0" 
+                      HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cbTeam_SelectionChanged"/>
+            <ComboBox x:Name="cbLine" Height="40" Width="160" Margin="0,20,0,0" 
+                      HorizontalAlignment="Center" VerticalAlignment="Top" SelectionChanged="cbLine_SelectionChanged"/>
+            <TextBox x:Name="tbPOrder" Height="40" Width="160" Margin="0,20,20,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" TextChanged="tbPOrder_TextChanged"/>
+            <TextBox x:Name="tbWareNum" Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" TextChanged="tbWareNum_TextChanged"/>
+            <Label x:Name="lblRecipeNum" Height="40" Width="160" Margin="0,80,0,0" Content="00000000" 
+                   HorizontalAlignment="Center" VerticalAlignment="Top" 
+                   FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
+            <Button x:Name="btnProcess" Content="Forløb" Height="40" Width="160" 
+                    Margin="420,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Click="btnProcess_Click" FontSize="20" FontFamily="Bahnschrift Light" 
+                    BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+            <TextBox x:Name="tbReusable" Height="40" Width="160" Margin="20,140,0,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Left" VerticalAlignment="Top" 
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                     TextChanged="tbReusable_TextChanged"/>
+            <TextBox x:Name="tbSweep" Height="40" Width="160" Margin="0,140,0,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Center" VerticalAlignment="Top" 
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                     TextChanged="tbSweep_TextChanged"/>
+            <TextBox x:Name="tbTotalBoxes" Height="40" Width="160" Margin="0,140,20,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Right" VerticalAlignment="Top" 
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                     TextChanged="tbTotalBoxes_TextChanged"/>
+            <Label Content="Hold" 
+                   Height="20" Width="160"
+                   HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="Linje" 
+                Height="20" Width="160"
+                HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="P.Ordre" 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="420,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="Vare nr." 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="20,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="Sortiment nr." 
+                Height="20" Width="160"
+                HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="" 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="420,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="Rasp (kg)" 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="20,125,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="Opfej (kg)" 
+                Height="20" Width="160"
+                HorizontalAlignment="Center" Margin="0,125,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="Antal kasser" 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="420,125,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <TextBox x:Name="tbDate" Height="40" Width="160" Margin="20,200,0,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Left" VerticalAlignment="Top" 
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                     TextChanged="tbDate_TextChanged"/>
+            <Label Content="Dato (dd/mm/åå)" 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" 
+                   FontFamily="Arial" FontSize="10"/>
+            <TextBox x:Name="tbTimeStart" Height="40" Width="160" Margin="0,200,0,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Center" VerticalAlignment="Top" 
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                     TextChanged="tbTimeStart_TextChanged"/>
+            <Label Content="Start tid (tt:mm)" 
+                   Height="20" Width="160"
+                   HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" 
+                   FontFamily="Arial" FontSize="10"/>
+            <TextBox x:Name="tbTimeEnd" Height="40" Width="160" Margin="0,200,20,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Right" VerticalAlignment="Top" 
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                     TextChanged="tbTimeEnd_TextChanged"/>
+            <Label Content="Slut tid (tt:mm)" 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="420,185,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+        </Grid>
+
+        <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#FFDDDDED">
+            <Button x:Name="btnSave" Content="Gem rapport" Height="40" Width="150" 
+                    Margin="275,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                    Click="btnSave_Click" FontSize="20" FontFamily="Bahnschrift Light" 
+                    BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+            <Button x:Name="btnBack" Content="Tilbage" Height="40" Width="150" 
+                    Margin="440,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                    Click="btnBack_Click" FontSize="20" FontFamily="Bahnschrift Light" 
+                    BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+            <CheckBox x:Name="chkWeightCheck" Content="Vægtkontrol" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Center" Height="16" Width="100" IsChecked="False" RenderTransformOrigin="0.5,0.5" Checked="chkWeightCheck_Checked">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+
+        </Grid>
+
+    </Grid>
+</Window>
