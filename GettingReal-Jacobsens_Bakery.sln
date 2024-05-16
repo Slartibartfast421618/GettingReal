@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GettingReal-Jacobsens_Bakery", "GettingReal-Jacobsens_Bakery\GettingReal-Jacobsens_Bakery.csproj", "{74896CF1-401E-4BA3-896F-A7B5023A1D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingReal_Jacobsens_Bakery_Test", "GettingReal_Jacobsens_Bakery_Test\GettingReal_Jacobsens_Bakery_Test.csproj", "{62F7F92D-2D99-48BC-ABB9-2112292CB497}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GettingReal_Jacobsens_Bakery_Test", "GettingReal_Jacobsens_Bakery_Test\GettingReal_Jacobsens_Bakery_Test.csproj", "{62F7F92D-2D99-48BC-ABB9-2112292CB497}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

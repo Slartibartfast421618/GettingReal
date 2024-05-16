@@ -16,18 +16,23 @@ using System.Windows.Shapes;
 namespace GettingReal_Jacobsens_Bakery.View
 {
     /// <summary>
-    /// Interaction logic for NewReport.xaml
+    /// Interaction logic for NewReportWindow.xaml
     /// </summary>
-    public partial class NewReport : Window
+    public partial class NewReportWindow : Window
     {
-        public NewReport()
+        readonly ProcessesWindow processesWindow;
+
+        public NewReportWindow()
         {
             InitializeComponent();
+
+            processesWindow = new ProcessesWindow();
+            InitializeTeamsAndLines();
         }
 
         private void btnProcess_Click(object sender, RoutedEventArgs e)
         {   // Access current production's processes
-
+            processesWindow.Show();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -36,8 +41,8 @@ namespace GettingReal_Jacobsens_Bakery.View
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
-        {   // Close window and abandon information, should have a confirmation window!
-
+        {   // Close window and (maybe) abandon information, should have a confirmation window if any data has been entered!
+            Close();
         }
 
         private void cbTeam_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,12 +65,12 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         }
 
-        private void tbReusable_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbCrumbles_TextChanged(object sender, TextChangedEventArgs e)
         {   // "Rasp", should print be suffixed with kg?
 
         }
 
-        private void tbSweep_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbSpillage_TextChanged(object sender, TextChangedEventArgs e)
         {   // "Opfej", should print be suffixed with kg?
 
         }
@@ -93,6 +98,19 @@ namespace GettingReal_Jacobsens_Bakery.View
         private void chkWeightCheck_Checked(object sender, RoutedEventArgs e)
         {   // Wasn't needed often, so for MVP we run this naïve and never require it, but do note it in our final information dump
 
+        }
+
+
+
+        private void InitializeTeamsAndLines()
+        {   // Initialize from Team and Line enums! Temporary implementation for now, do foreach in proper implementation
+            cbTeam.Items.Add("Blå");
+            cbTeam.Items.Add("Rød");
+            cbTeam.Items.Add("Hvid");
+            cbLine.Items.Add("1");
+            cbLine.Items.Add("2");
+            cbLine.Items.Add("3");
+            cbLine.Items.Add("4");
         }
     }
 }
