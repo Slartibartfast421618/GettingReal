@@ -54,4 +54,3 @@ If you don't want your changes, use 'git stash' to store them in a corner, never
 ### Merge stable branches onto master
 _If A is for apple, and B is for banana, what is C for? Plastic explosive._
 1) Good luck _- Martin_
-
