@@ -9,21 +9,21 @@ namespace GettingReal_Jacobsens_Bakery.Model
 {
     public class ProductionProcess
     {
-        private DateTime _procStart;
-        private DateTime _procEnd;
+        private DateTime _prodStart;
+        private DateTime _prodEnd;
         private string _reason;
 
 
-        public DateTime ProcStart
+        public DateTime ProdStart
         {
-            get { return _procStart; }
-            set { _procStart = value; }
+            get { return _prodStart; }
+            set { _prodStart = value; }
         }
 
-        public DateTime ProcEnd
+        public DateTime ProdEnd
         {
-            get { return _procEnd; }
-            set { _procEnd = value; }
+            get { return _prodEnd; }
+            set { _prodEnd = value; }
         }
 
         public string Reason
@@ -35,13 +35,13 @@ namespace GettingReal_Jacobsens_Bakery.Model
 
         public override string ToString()
         {
-            return $"ProcessStart: {_procStart}, ProcessEnd: {_procEnd}, Reason: {_reason}";
+            return $"ProcessStart: {_prodStart}, ProcessEnd: {_prodEnd}, Reason: {_reason}";
         }
 
         // DownTime er en TimeSpan
         public TimeSpan DowntimeDuration()
         {
-            return ProcEnd - ProcStart;
+            return ProdEnd - ProdStart;
         }
     }
 }

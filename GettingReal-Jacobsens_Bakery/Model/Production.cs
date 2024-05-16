@@ -8,7 +8,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
 {
     public class Production
     {
-        public ProdItem Item = new ProdItem();
+        public Item ProdItem = new Item();
         private DateTime _prodStart;
 
         public DateTime ProdStart

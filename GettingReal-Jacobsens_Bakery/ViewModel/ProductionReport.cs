@@ -10,10 +10,8 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
     public class ProductionReport
     {
         public ProductionTeam ProdTeam = new ProductionTeam();
-        public ProductionProcess Process;
-        public Line prodLine = new Line();
-        public Team team = new Team();
 
+        // Get and set methods for the properties in the Production Team class.
         public DateTime Date
         {
             get { return ProdTeam.Date; }
@@ -29,17 +27,21 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.ProdTeam; }
             set { ProdTeam.ProdTeam = value; }
         }
-        public ProductionProcess selectedProcess;
-        //{
-        //    get { return selectedProcess; }
-        //    set { selectedProcess = value; }
-        //}
+
+        //Properties and methods for reporting downtime durations, and a getter for the downtimeduration prop.
+        public ProductionProcess selectedProcess
+        {
+            get { return selectedProcess; }
+            set { selectedProcess = value; }
+        }
         public void NewProcess(ProductionProcess process)
         {
             ProdTeam.AddProductionProcess(process);
             selectedProcess = process;
         }
         public TimeSpan DowntimeDuration { get { return ProdTeam.DowntimeDuration; } }
+
+        // Get and set methods for employee signature, from the Employee class, both with a default value of "signature".
         public string SigOne
         {
             get { return ProdTeam.EmployeeOne.Signature; }
@@ -50,6 +52,8 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.EmployeeTwo.Signature; }
             set { ProdTeam.EmployeeTwo.Signature = value; }
         }
+
+        // Get and set methods for the properties in the ActiveRecipe class.
         public int RecipeId
         {
             get { return ProdTeam.Recipe.RecipeId; }
@@ -66,6 +70,8 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.Recipe.Spillage; }
             set { ProdTeam.Recipe.Spillage = value; }
         }
+
+        // Get and set methods for the actual production, in the Production class.
         public DateTime ProdStart
         {
             get { return ProdTeam.Recipe.Production.ProdStart; }
@@ -86,15 +92,23 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.Recipe.Production.BoxesProduced; }
             set { ProdTeam.Recipe.Production.BoxesProduced = value; }
         }
+
+        // Get and set methods for the produced item, located in the Item class.
         public int ItemId
         {
-            get { return ProdTeam.Recipe.Production.Item.ItemId; }
-            set { ProdTeam.Recipe.Production.Item.ItemId = value; }
+            get { return ProdTeam.Recipe.Production.ProdItem.ItemId; }
         }
         public int Recipe
         {
-            get { return ProdTeam.Recipe.Production.Item.Recipe; }
-            set { ProdTeam.Recipe.Production.Item.Recipe = value; }
+            get { return ProdTeam.Recipe.Production.ProdItem.RecipeId; }
+        }
+        public void SetItem(int Item, int Recipe)
+        {
+            ProdTeam.Recipe.Production.ProdItem.SetItem(Item, Recipe);
+        }
+        public void SetItem(int itemId, string name, int l1, int l2, int l3, int l4, int weight, string dimensions, int recipe)
+        {
+            ProdTeam.Recipe.Production.ProdItem.SetItem(itemId, name, l1, l2, l3, l4, weight, dimensions, recipe);
         }
     }
 }

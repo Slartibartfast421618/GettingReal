@@ -6,19 +6,7 @@ using System.Threading.Tasks;
 
 namespace GettingReal_Jacobsens_Bakery.Model
 {
-    public enum Team
-    {
-        red,
-        white,
-        blue
-    }
-    public enum Line
-    {
-        one,
-        two,
-        three,
-        four
-    }
+    
     public class ProductionTeam
     {
 
@@ -56,8 +44,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
             get { return _downtimeDuration; }
         }
 
-
-
+        // methods for administering the Production Process Repo
         public void AddProductionProcess(ProductionProcess productionProcess)
         {
             PPRepo.Add(productionProcess);
@@ -76,8 +63,5 @@ namespace GettingReal_Jacobsens_Bakery.Model
             }
             return null;
         }
-
-        // Skal dette være ToString? 
-
     }
 }

@@ -15,14 +15,14 @@ namespace GettingReal_Jacobsens_Bakery_Test
 
             ProductionProcess p1 = new ProductionProcess()
             {
-                ProcStart = DateTime.Parse("14:30:00"),
-                ProcEnd = DateTime.Parse("15:00:00"),
+                ProdStart = DateTime.Parse("14:30:00"),
+                ProdEnd = DateTime.Parse("15:00:00"),
                 Reason = "Omstilling."
             };
             ProductionProcess p2 = new ProductionProcess()
             {
-                ProcStart = DateTime.Parse("15:30:00"),
-                ProcEnd = DateTime.Parse("16:30:00"),
+                ProdStart = DateTime.Parse("15:30:00"),
+                ProdEnd = DateTime.Parse("16:30:00"),
                 Reason = "Nedbrud på prægemaskine."
             };
             Report = new ProductionReport()
@@ -39,10 +39,11 @@ namespace GettingReal_Jacobsens_Bakery_Test
                 ProdEnd = DateTime.Parse("20:00:00"),
                 ProdOrderId = "P101275",
                 BoxesProduced = 300,
-                ItemId = 220275,
-                Recipe = 381121
+                //ItemId = 220275,
+                //Recipe = 381121
+
             };
-            PRRepo repo = new PRRepo();
+            Report.SetItem(220275, 381121);
             Report.NewProcess(p1);
             Report.NewProcess(p2);
         }
@@ -63,8 +64,8 @@ namespace GettingReal_Jacobsens_Bakery_Test
             // Act
             ProductionProcess p3 = new ProductionProcess()
             {
-                ProcStart = DateTime.Parse("17:30:00"),
-                ProcEnd = DateTime.Parse("20:30:00"),
+                ProdStart = DateTime.Parse("17:30:00"),
+                ProdEnd = DateTime.Parse("20:30:00"),
                 Reason = "Nedbrud på prægemaskine."
             };
             Report.NewProcess(p3);
@@ -91,7 +92,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         public void TestProdItem()
         {
             Assert.AreEqual(220275, Report.ItemId);
-            Assert.AreEqual(381121, Report.ProdTeam.Recipe.Production.Item.Recipe);
+            Assert.AreEqual(381121, Report.ProdTeam.Recipe.Production.ProdItem.RecipeId);
         }
     }
 }
