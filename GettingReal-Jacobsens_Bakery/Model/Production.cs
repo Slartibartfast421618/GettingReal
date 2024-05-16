@@ -10,27 +10,27 @@ namespace GettingReal_Jacobsens_Bakery.Model
     {
         public Item ProdItem = new Item();
         private DateTime _prodStart;
+        private DateTime _prodEnd;
+        private string _prodOrderId;
+        private int _boxesProduced;
 
         public DateTime ProdStart
         {
             get { return _prodStart; }
             set { _prodStart = value; }
         }
-        private DateTime _prodEnd;
 
         public DateTime ProdEnd
         {
             get { return _prodEnd; }
             set { _prodEnd = value; }
         }
-        private string _prodOrderId;
 
         public string ProdOrderId
         {
             get { return _prodOrderId; }
             set { _prodOrderId = value; }
         }
-        private int _boxesProduced;
 
         public int BoxesProduced
         {
