@@ -37,7 +37,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public void NewProcess(ProductionProcess process)
         {
             ProdTeam.AddProductionProcess(process);
-            selectedProcess = process;
+            //selectedProcess = process;
         }
         public TimeSpan DowntimeDuration { get { return ProdTeam.DowntimeDuration; } }
 

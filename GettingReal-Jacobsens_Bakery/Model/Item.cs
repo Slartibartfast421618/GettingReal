@@ -22,7 +22,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
             get { return _name; }
         }
 
-        private int[] _line;
+        private int[] _line = new int[4];
 
         public int[] Line
         {
@@ -49,6 +49,39 @@ namespace GettingReal_Jacobsens_Bakery.Model
         {
             get { return _recipeId; }
         }
+        public Item(int itemId, string name, int[] line, int unitWeight, string boxDimensions, int recipeId)
+        {
+            _itemId = itemId;
+            _name = name;
+            _line = line;
+            _unitWeight = unitWeight;
+            _boxDimensions = boxDimensions;
+            _recipeId = recipeId;
+        }
+        public Item(int itemId, string name, int l0, int l1, int l2, int l3, int weight, string dimensions, int recipe)
+        {
+            _itemId= itemId;
+            _name = name;
+            _line[0] = l0;
+            _line[1] = l1;
+            _line[2] = l2;
+            _line[3] = l3;
+            _unitWeight = weight;
+            _boxDimensions = dimensions;
+            _recipeId = recipe;
+        }
+        public Item() 
+        {
+            //_itemId = 0;
+            //_name = "Selected Item name";
+            //_line[0] = 0;
+            //_line[1] = 0;
+            //_line[2] = 0;
+            //_line[3] = 0;
+            //_unitWeight = 0;
+            //_boxDimensions = "Selected Items box dimensions";
+            //_recipeId = 0;
+        }
 
         // Set method for the UnitTest
         public void SetItem(int itemId, int recipe)
@@ -70,6 +103,9 @@ namespace GettingReal_Jacobsens_Bakery.Model
             _boxDimensions = dimensions;
             _recipeId = recipe;
         }
-
+        public string GetItem()
+        {
+            return $"{ItemId},{Name},{Line[0]}:{Line[1]}:{Line[2]}:{Line[3]},{UnitWeight},{BoxDimensions},{RecipeId}";
+        }
     }
 }
