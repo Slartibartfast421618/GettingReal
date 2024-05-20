@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GettingReal_Jacobsens_Bakery.Model;
+using GettingReal_Jacobsens_Bakery.ViewModel;
 
 namespace GettingReal_Jacobsens_Bakery.View
 {
@@ -19,10 +21,14 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class ProcessesWindow : Window
     {
+        ProductionReport pr = new ProductionReport();
+        ProductionProcess pp;
+
         public ProcessesWindow()
         {
             InitializeComponent();
 
+            DataContext = pr;
             InitializeCommonProcesses();
         }
 
@@ -33,12 +39,13 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void btnAddProcess_Click(object sender, RoutedEventArgs e)
         {   // Add a blank process, and set it as the active selected item
-
+            //pr.NewProcess(pp);
+            pr.AddDefaultProcess();
         }
 
         private void btnDeleteProcess_Click(object sender, RoutedEventArgs e)
         {   // Remove selected process
-
+            pr.DeleteProcess(livCurrentProcesses.SelectedIndex);
         }
 
         private void btnNavigateUp_Click(object sender, RoutedEventArgs e)
@@ -80,7 +87,7 @@ namespace GettingReal_Jacobsens_Bakery.View
 
 
         private void InitializeCommonProcesses()
-        {   // These could be from an enum class, but we're simply setting them here for now
+        {   // These could be from an enum class or imported from a document, but we're simply setting them here for now
             cbReason.Items.Add("Omstilling");
             cbReason.Items.Add("Reparation prægemaskine");
             cbReason.Items.Add("Sprædebånd gået i stå");

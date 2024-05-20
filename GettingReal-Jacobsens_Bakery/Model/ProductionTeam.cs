@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,14 +10,14 @@ using System.Threading.Tasks;
 namespace GettingReal_Jacobsens_Bakery.Model
 {
     
-    public class ProductionTeam
+    public class ProductionTeam : INotifyPropertyChanged
     {
 
         private DateTime _date;
         private Line _prodLine;
         private Team _prodTeam;
         private TimeSpan _downtimeDuration;
-        public List<ProductionProcess> PPRepo = new List<ProductionProcess>();
+        public ObservableCollection<ProductionProcess> PPRepo = new ObservableCollection<ProductionProcess>();
         public Employee EmployeeOne = new Employee();
         public Employee EmployeeTwo = new Employee();
         public ActiveRecipe Recipe = new ActiveRecipe();
@@ -48,8 +51,17 @@ namespace GettingReal_Jacobsens_Bakery.Model
         public void AddProductionProcess(ProductionProcess productionProcess)
         {
             PPRepo.Add(productionProcess);
+        }
+        public void AddProductionProcess()
+        {
+            ProductionProcess pr = new ProductionProcess("00:00", "00:00", "abc");
+            PPRepo.Add(pr);
+            OnPropertyChanged(nameof(PPRepo));
+        }
+        public void CalculateTotalProcessDowntime()
+        {
             _downtimeDuration = TimeSpan.Parse("00:00:00");
-            foreach (var process in PPRepo)
+            foreach (ProductionProcess process in PPRepo)
             {
                 _downtimeDuration = _downtimeDuration + process.DowntimeDuration();
             }
@@ -62,6 +74,19 @@ namespace GettingReal_Jacobsens_Bakery.Model
                 return productionProcessPeriod;
             }
             return null;
+        }
+
+
+
+        // INotifyPropertyChanged handler
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if (propertyChanged != null)
+            {
+                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

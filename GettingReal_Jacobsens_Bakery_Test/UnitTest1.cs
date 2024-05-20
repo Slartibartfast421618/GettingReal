@@ -20,19 +20,19 @@ namespace GettingReal_Jacobsens_Bakery_Test
 
             p1 = new ProductionProcess()
             {
-                ProdStart = DateTime.Parse("14:30:00"),
-                ProdEnd = DateTime.Parse("15:00:00"),
+                ProcStart = DateTime.Parse("14:30:00"),
+                ProcEnd = DateTime.Parse("15:00:00"),
                 Reason = "Omstilling."
             };
             p2 = new ProductionProcess()
             {
-                ProdStart = DateTime.Parse("15:30:00"),
-                ProdEnd = DateTime.Parse("16:30:00"),
+                ProcStart = DateTime.Parse("15:30:00"),
+                ProcEnd = DateTime.Parse("16:30:00"),
                 Reason = "Nedbrud på prægemaskine."
             };
             Report = new ProductionReport()
             {
-                Date = DateTime.Today,
+                Date = DateTime.Parse("01/02/2003"),
                 Line = Line.one,
                 Team = Team.red,
                 SigOne = "Lars Hansen",
@@ -57,7 +57,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         [TestMethod]
         public void TestOfProdTeam()
         {
-            Assert.AreEqual(DateTime.Today, Report.Date);
+            Assert.AreEqual(DateTime.Parse("01/02/2003"), Report.Date);
             Assert.AreEqual(Line.one, Report.Line);
             Assert.AreEqual(Team.red, Report.Team);
             Assert.AreEqual("Lars Hansen", Report.SigOne);
@@ -65,17 +65,21 @@ namespace GettingReal_Jacobsens_Bakery_Test
         [TestMethod]
         public void TestNewProcess()
         {
+            // Act
+            Report.ProdTeam.CalculateTotalProcessDowntime();
+
             // Assert
             Assert.AreEqual(TimeSpan.Parse("01:30:00"), Report.DowntimeDuration);
 
             // Act
             ProductionProcess p3 = new ProductionProcess()
             {
-                ProdStart = DateTime.Parse("17:30:00"),
-                ProdEnd = DateTime.Parse("20:30:00"),
+                ProcStart = DateTime.Parse("17:30:00"),
+                ProcEnd = DateTime.Parse("20:30:00"),
                 Reason = "Nedbrud på prægemaskine."
             };
             Report.NewProcess(p3);
+            Report.ProdTeam.CalculateTotalProcessDowntime();
 
             // Assert
             Assert.AreEqual(TimeSpan.Parse("04:30:00"), Report.DowntimeDuration);
@@ -107,7 +111,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         [TestMethod]
         public void TestProdProc()
         {
-            Assert.AreEqual(DateTime.Parse("15:00:00"), Report.ProdTeam.PPRepo[0].ProdEnd);
+            Assert.AreEqual(DateTime.Parse("15:00:00"), Report.ProdTeam.PPRepo[0].ProcEnd);
             Assert.AreEqual(p1.Reason, Report.ProdTeam.PPRepo[0].Reason);
             Assert.AreEqual(p2.DowntimeDuration(), Report.ProdTeam.PPRepo[1].DowntimeDuration());
 

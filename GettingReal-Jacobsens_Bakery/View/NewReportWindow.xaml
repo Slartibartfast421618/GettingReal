@@ -24,30 +24,36 @@
                       HorizontalAlignment="Center" VerticalAlignment="Top" 
                       FontSize="24" FontFamily="Bahnschrift Light" 
                       SelectionChanged="cbLine_SelectionChanged"/>
-            <TextBox x:Name="tbPOrder" Height="40" Width="160" Margin="0,20,20,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbPOrder" Text="{Binding SelectedReport.ProdOrderId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="0,20,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbPOrder_TextChanged"/>
-            <TextBox x:Name="tbWareNum" Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbWareNum" Text="{Binding SelectedReport.ItemId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbWareNum_TextChanged"/>
-            <Label x:Name="lblRecipeNum" Height="40" Width="160" Margin="0,80,0,0" Content="00000000" 
+            <Label x:Name="lblRecipeNum" Content="{Binding SelectedReport.RecipeId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                   Height="40" Width="160" Margin="0,80,0,0" 
                    HorizontalAlignment="Center" VerticalAlignment="Top" 
                    FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <Button x:Name="btnProcess" Content="Forløb" Height="40" Width="160" 
                     Margin="420,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
                     Click="btnProcess_Click" FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
-            <TextBox x:Name="tbCrumbles" Height="40" Width="160" Margin="20,140,0,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbCrumbles" Text="{Binding SelectedReport.Crumbles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="20,140,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbCrumbles_TextChanged"/>
-            <TextBox x:Name="tbSpillage" Height="40" Width="160" Margin="0,140,0,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbSpillage" Text="{Binding SelectedReport.Spillage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="0,140,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Center" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbSpillage_TextChanged"/>
-            <TextBox x:Name="tbTotalBoxes" Height="40" Width="160" Margin="0,140,20,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbTotalBoxes" Text="{Binding SelectedReport.BoxesProduced, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="0,140,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbTotalBoxes_TextChanged"/>
@@ -78,7 +84,8 @@
             <Label Content="Antal kasser" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,125,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbDate" Height="40" Width="160" Margin="20,200,0,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbDate" Text="{Binding SelectedReport.Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="20,200,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbDate_TextChanged"/>
@@ -86,7 +93,8 @@
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbTimeStart" Height="40" Width="160" Margin="0,200,0,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbTimeStart" Text="{Binding SelectedReport.ProdStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="0,200,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Center" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbTimeStart_TextChanged"/>
@@ -94,7 +102,8 @@
                    Height="20" Width="160"
                    HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbTimeEnd" Height="40" Width="160" Margin="0,200,20,0" TextWrapping="Wrap" 
+            <TextBox x:Name="tbTimeEnd" Text="{Binding SelectedReport.ProdEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="40" Width="160" Margin="0,200,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      TextChanged="tbTimeEnd_TextChanged"/>
@@ -112,7 +121,9 @@
                     Margin="440,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                     Click="btnBack_Click" FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
-            <CheckBox x:Name="chkWeightCheck" Content="Vægtkontrol" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Center" Height="16" Width="100" IsChecked="False" RenderTransformOrigin="0.5,0.5" Checked="chkWeightCheck_Checked">
+            <CheckBox x:Name="chkWeightCheck" Content="Vægtkontrol" IsChecked="False" 
+                      HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Center" 
+                      Height="16" Width="100" RenderTransformOrigin="0.5,0.5" Checked="chkWeightCheck_Checked">
                 <CheckBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

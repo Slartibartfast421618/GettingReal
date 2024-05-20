@@ -13,6 +13,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
         public int ItemId
         {
             get { return _itemId; }
+            set { _itemId = value; }
         }
 
         private string _name;

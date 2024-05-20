@@ -1,17 +1,32 @@
-﻿using GettingReal_Jacobsens_Bakery.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GettingReal_Jacobsens_Bakery.Model;
 
 namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
-    public class ProductionReport
+    public class ProductionReport : INotifyPropertyChanged
     {
-        public ProductionTeam ProdTeam = new ProductionTeam();
+        private ProductionTeam _prodTeam;
+
+        public ProductionReport() 
+        {
+            ProdTeam = new ProductionTeam();
+        }
 
         // Get and set methods for the properties in the Production Team class.
+        public ProductionTeam ProdTeam
+        {
+            get { return _prodTeam; }
+            set
+            {
+                _prodTeam = value;
+                OnPropertyChanged(nameof(ProductionTeam));
+            }
+        }
         public DateTime Date
         {
             get { return ProdTeam.Date; }
@@ -29,17 +44,29 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
 
         //Properties and methods for reporting downtime durations, and a getter for the downtimeduration prop.
-        public ProductionProcess selectedProcess
+        private ProductionProcess _selectedProcess;
+        public ProductionProcess SelectedProcess
         {
-            get { return selectedProcess; }
-            set { selectedProcess = value; }
+            get { return _selectedProcess; }
+            set { _selectedProcess = value; }
         }
         public void NewProcess(ProductionProcess process)
         {
             ProdTeam.AddProductionProcess(process);
-            selectedProcess = process;
+            SelectedProcess = process;
         }
         public TimeSpan DowntimeDuration { get { return ProdTeam.DowntimeDuration; } }
+        public void DeleteProcess(int id)
+        {
+            if (id < ProdTeam.PPRepo.Count && id >= 0)
+            {
+                ProdTeam.PPRepo.RemoveAt(id);
+            }
+        }
+        public void AddDefaultProcess()
+        {
+            ProdTeam.AddProductionProcess();
+        }
 
         // Get and set methods for employee signature, from the Employee class, both with a default value of "signature".
         public string SigOne
@@ -97,6 +124,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public int ItemId
         {
             get { return ProdTeam.Recipe.Production.ProdItem.ItemId; }
+            set { ProdTeam.Recipe.Production.ProdItem.ItemId = value; }
         }
         public int Recipe
         {
@@ -109,6 +137,19 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public void SetItem(int itemId, string name, int l1, int l2, int l3, int l4, int weight, string dimensions, int recipe)
         {
             ProdTeam.Recipe.Production.ProdItem.SetItem(itemId, name, l1, l2, l3, l4, weight, dimensions, recipe);
+        }
+
+
+
+        // INotifyPropertyChanged handler
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if (propertyChanged != null)
+            {
+                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

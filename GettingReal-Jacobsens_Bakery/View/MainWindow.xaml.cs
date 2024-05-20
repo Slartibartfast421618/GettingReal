@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GettingReal_Jacobsens_Bakery.ViewModel;
 
 namespace GettingReal_Jacobsens_Bakery.View
 {
@@ -19,13 +20,11 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly NewReportWindow newReportWindow;
+        NewReportWindow newReportWindow;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            newReportWindow = new NewReportWindow();
         }
 
         private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,10 +34,8 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void btnNewReport_Click(object sender, RoutedEventArgs e)
         {   // Change window to NewReport
+            newReportWindow = new NewReportWindow();
             newReportWindow.Show();
-
-            // Now it just needs to know which data to read, if selected from the list,
-            // or that it needs to have new datafields
         }
 
         private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)

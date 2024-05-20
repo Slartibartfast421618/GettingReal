@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GettingReal_Jacobsens_Bakery.ViewModel;
 
 namespace GettingReal_Jacobsens_Bakery.View
 {
@@ -20,19 +21,24 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class NewReportWindow : Window
     {
-        readonly ProcessesWindow processesWindow;
+        PRRepo prr = new PRRepo();
+        ProcessesWindow processesWindow;
 
         public NewReportWindow()
         {
             InitializeComponent();
 
+            DataContext = prr;
             processesWindow = new ProcessesWindow();
             InitializeTeamsAndLines();
+            prr.NewLine();
         }
 
         private void btnProcess_Click(object sender, RoutedEventArgs e)
         {   // Access current production's processes
+            processesWindow = new ProcessesWindow();
             processesWindow.Show();
+            // MISSING PROCESS INFORMATION!! how do?
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -43,6 +49,7 @@ namespace GettingReal_Jacobsens_Bakery.View
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {   // Close window and (maybe) abandon information, should have a confirmation window if any data has been entered!
             Close();
+            // CHECK NOTES ABOVE!!
         }
 
         private void cbTeam_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -111,6 +118,7 @@ namespace GettingReal_Jacobsens_Bakery.View
             cbLine.Items.Add("2");
             cbLine.Items.Add("3");
             cbLine.Items.Add("4");
+            // REMINDER!! This layer is not allowed to look directly at the enums class
         }
     }
 }

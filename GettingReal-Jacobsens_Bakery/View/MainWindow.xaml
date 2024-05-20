@@ -15,7 +15,8 @@
 
         <Grid Height="254" Width="600" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,120,0,0">
             <ScrollViewer Width="600" HorizontalAlignment="Left">
-                <ListView x:Name="livCurrentReports" SelectionChanged="livCurrentReports_SelectionChanged" Width="582" Margin="0,0,0,0" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView x:Name="livCurrentReports" ItemsSource="{Binding ReportRepo}" SelectedItem="{Binding SelectedReport, Mode=TwoWay}"
+                          SelectionChanged="livCurrentReports_SelectionChanged" Width="582" Margin="0,0,0,0" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.Resources>
                         <Style TargetType="{x:Type GridViewColumnHeader}">
                             <Setter Property="HorizontalContentAlignment" Value="Left"/>

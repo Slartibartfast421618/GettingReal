@@ -19,6 +19,7 @@
         <Grid Height="314" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center">
             <ScrollViewer Height="245" Width="450" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
                 <ListView x:Name="livCurrentProcesses" SelectionChanged="livCurrentProcesses_SelectionChanged" 
+                          ItemsSource="{Binding PPRepo}" SelectedItem="{Binding SelectedProcess, Mode=TwoWay}"
                           Height="Auto" Width="432" Margin="0,0,0,0" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.Resources>
                         <Style TargetType="{x:Type GridViewColumnHeader}">
@@ -27,9 +28,27 @@
                     </ListView.Resources>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Start" Width="50"/>
-                            <GridViewColumn Header="Slut" Width="50"/>
-                            <GridViewColumn Header="Bemærkninger" Width="320"/>
+                            <GridViewColumn Header="Start" Width="50">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ProcStart}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Slut" Width="50">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ProcEnd}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Bemærkninger" Width="320">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Reason}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
