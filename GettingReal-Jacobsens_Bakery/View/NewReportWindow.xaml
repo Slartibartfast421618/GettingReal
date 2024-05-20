@@ -27,36 +27,32 @@
             <TextBox x:Name="tbPOrder" Text="{Binding SelectedReport.ProdOrderId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,20,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
-                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbPOrder_TextChanged"/>
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <TextBox x:Name="tbWareNum" Text="{Binding SelectedReport.ItemId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
-                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbWareNum_TextChanged"/>
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <Label x:Name="lblRecipeNum" Content="{Binding SelectedReport.RecipeId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
                    Height="40" Width="160" Margin="0,80,0,0" 
                    HorizontalAlignment="Center" VerticalAlignment="Top" 
                    FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <Button x:Name="btnProcess" Content="Forløb" Height="40" Width="160" 
                     Margin="420,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    Click="btnProcess_Click" FontSize="20" FontFamily="Bahnschrift Light" 
+                    Click="btnProcess_Click" 
+                    FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
             <TextBox x:Name="tbCrumbles" Text="{Binding SelectedReport.Crumbles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="20,140,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
-                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbCrumbles_TextChanged"/>
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <TextBox x:Name="tbSpillage" Text="{Binding SelectedReport.Spillage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,140,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Center" VerticalAlignment="Top" 
-                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbSpillage_TextChanged"/>
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <TextBox x:Name="tbTotalBoxes" Text="{Binding SelectedReport.BoxesProduced, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,140,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
-                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbTotalBoxes_TextChanged"/>
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <Label Content="Hold" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
@@ -84,29 +80,29 @@
             <Label Content="Antal kasser" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,125,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbDate" Text="{Binding SelectedReport.Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbDate" Text="{Binding SelectedReport.DateFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
                      Height="40" Width="160" Margin="20,200,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbDate_TextChanged"/>
+                     GotFocus="TextBox_GotFocus"/>
             <Label Content="Dato (dd/mm/åå)" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbTimeStart" Text="{Binding SelectedReport.ProdStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbTimeStart" Text="{Binding SelectedReport.ProdStartFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
                      Height="40" Width="160" Margin="0,200,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Center" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbTimeStart_TextChanged"/>
+                     GotFocus="TextBox_GotFocus"/>
             <Label Content="Start tid (tt:mm)" 
                    Height="20" Width="160"
                    HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbTimeEnd" Text="{Binding SelectedReport.ProdEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbTimeEnd" Text="{Binding SelectedReport.ProdEndFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
                      Height="40" Width="160" Margin="0,200,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
-                     TextChanged="tbTimeEnd_TextChanged"/>
+                     GotFocus="TextBox_GotFocus"/>
             <Label Content="Slut tid (tt:mm)" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,185,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>

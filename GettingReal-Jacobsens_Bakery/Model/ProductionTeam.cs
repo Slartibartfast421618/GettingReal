@@ -17,7 +17,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
         private Line _prodLine;
         private Team _prodTeam;
         private TimeSpan _downtimeDuration;
-        public ObservableCollection<ProductionProcess> PPRepo = new ObservableCollection<ProductionProcess>();
+        public ObservableCollection<ProductionProcess> PPRepo { get; } = new ObservableCollection<ProductionProcess>();
         public Employee EmployeeOne = new Employee();
         public Employee EmployeeTwo = new Employee();
         public ActiveRecipe Recipe = new ActiveRecipe();
@@ -28,6 +28,46 @@ namespace GettingReal_Jacobsens_Bakery.Model
         {
             get { return _date; }
             set { _date = value; }
+        }
+        public string DateFormatted
+        {
+            get { return _date.ToString("dd/MM/yy"); }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    if (value.Length >= 2 && value.Length <= 6 && (!value.Contains("/") || !value.Contains("-")))
+                    {
+                        switch (value.Length)
+                        {
+                            case 2:
+                                value = $"0{value.Substring(0, 1)}0{value.Substring(1, 1)}{DateTime.Now.ToString("yy")}";
+                                break;
+                            case 3:
+                                value = $"0{value.Substring(0, 1)}{value.Substring(1, 2)}{DateTime.Now.ToString("yy")}";
+                                break;
+                            case 4:
+                                if (value.Substring(2, 2) != DateTime.Now.Year.ToString("yy"))
+                                    value = $"{value.Substring(0, 2)}{value.Substring(2, 2)}{DateTime.Now.ToString("yy")}";
+                                else
+                                    value = $"0{value.Substring(0, 1)}0{value.Substring(1, 1)}{value.Substring(2, 2)}";
+                                break;
+                            case 5:
+                                value = $"0{value.Substring(0, 1)}{value.Substring(1, 2)}{value.Substring(3, 2)}";
+                                break;
+                        }
+                        string days = value.Substring(0, 2),
+                               months = value.Substring(2, 2),
+                               years = value.Substring(4, 2);
+                        DateTime.TryParse($"{days}/{months}/20{years}", out _date);
+                    }
+                    else
+                        DateTime.TryParse(value, out _date);
+                }
+                else
+                    _date = DateTime.Now;
+                OnPropertyChanged(nameof(DateFormatted));
+            }
         }
 
         public Line ProdLine

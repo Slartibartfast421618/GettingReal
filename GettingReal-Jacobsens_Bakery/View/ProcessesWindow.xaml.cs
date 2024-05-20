@@ -70,7 +70,7 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void tbReason_TextChanged(object sender, TextChangedEventArgs e)
         {   // Gets written over by cbReason, but allows custom messages
-
+            cbReason.SelectedItem = null;
         }
 
         private void cbReason_SelectionChanged(object sender, SelectionChangedEventArgs e)

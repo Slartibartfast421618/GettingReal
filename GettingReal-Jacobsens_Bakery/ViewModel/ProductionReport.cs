@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,13 +25,22 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             set
             {
                 _prodTeam = value;
-                OnPropertyChanged(nameof(ProductionTeam));
+                OnPropertyChanged(nameof(ProdTeam));
             }
         }
         public DateTime Date
         {
             get { return ProdTeam.Date; }
             set { ProdTeam.Date = value; }
+        }
+        public string DateFormatted
+        {
+            get { return ProdTeam.DateFormatted; }
+            set 
+            { 
+                ProdTeam.DateFormatted = value;
+                OnPropertyChanged(nameof(DateFormatted));
+            }
         }
         public Line Line
         {
@@ -48,7 +58,11 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public ProductionProcess SelectedProcess
         {
             get { return _selectedProcess; }
-            set { _selectedProcess = value; }
+            set 
+            { 
+                _selectedProcess = value; 
+                OnPropertyChanged(nameof(SelectedProcess));
+            }
         }
         public void NewProcess(ProductionProcess process)
         {
@@ -104,10 +118,20 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.Recipe.Production.ProdStart; }
             set { ProdTeam.Recipe.Production.ProdStart = value; }
         }
+        public string ProdStartFormatted
+        {
+            get { return ProdTeam.Recipe.Production.ProdStartFormatted; }
+            set { ProdTeam.Recipe.Production.ProdStartFormatted = value; }
+        }
         public DateTime ProdEnd
         {
             get { return ProdTeam.Recipe.Production.ProdEnd; }
             set { ProdTeam.Recipe.Production.ProdEnd = value; }
+        }
+        public string ProdEndFormatted
+        {
+            get { return ProdTeam.Recipe.Production.ProdEndFormatted; }
+            set { ProdTeam.Recipe.Production.ProdEndFormatted = value; }
         }
         public string ProdOrderId
         {

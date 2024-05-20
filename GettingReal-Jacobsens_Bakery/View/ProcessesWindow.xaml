@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GettingReal_Jacobsens_Bakery.View"
+        xmlns:local="clr-namespace:GettingReal_Jacobsens_Bakery.View" 
+        xmlns:viewmodel="clr-namespace:GettingReal_Jacobsens_Bakery.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ProductionReport}"
         mc:Ignorable="d"
         Title="ProcessesWindow" SizeToContent="WidthAndHeight">
     <Grid Height="434" Width="600">
@@ -17,42 +18,41 @@
         </Grid>
 
         <Grid Height="314" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ScrollViewer Height="245" Width="450" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
-                <ListView x:Name="livCurrentProcesses" SelectionChanged="livCurrentProcesses_SelectionChanged" 
-                          ItemsSource="{Binding PPRepo}" SelectedItem="{Binding SelectedProcess, Mode=TwoWay}"
-                          Height="Auto" Width="432" Margin="0,0,0,0" d:ItemsSource="{d:SampleData ItemCount=5}">
-                    <ListView.Resources>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Start" Width="50">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ProcStart}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Slut" Width="50">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ProcEnd}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Bemærkninger" Width="320">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Reason}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </ScrollViewer>
+            <ListView x:Name="livCurrentProcesses" SelectionChanged="livCurrentProcesses_SelectionChanged" 
+                      ItemsSource="{Binding ProdTeam.PPRepo}" SelectedItem="{Binding SelectedProcess, Mode=TwoWay}"
+                      Height="245" Width="450" Margin="0,0,0,0" d:ItemsSource="{d:SampleData ItemCount=5}"
+                      HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Start" Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProcStartFormatted}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Slut" Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProcEndFormatted}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Bemærkninger" Width="320">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Reason}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <Button x:Name="btnAddProcess" Content="Tilføj" 
                     Height="40" Width="100" Margin="00,20,20,0" HorizontalAlignment="Right" VerticalAlignment="Top" 
                     Click="btnAddProcess_Click" 
@@ -82,17 +82,20 @@
                     Click="btnNavigateDown_Click" 
                     FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
-            <TextBox x:Name="tbProcessStart" TextWrapping="Wrap" Text="" TextAlignment="Center" 
+            <TextBox x:Name="tbProcessStart" TextWrapping="Wrap" TextAlignment="Center" 
+                     Text="{Binding SelectedProcess.ProcStartFormatted, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
                      Width="65" Height="30" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                      FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbProcessStart_TextChanged" />
-            <TextBox x:Name="tbProcessEnd" TextWrapping="Wrap" Text="" TextAlignment="Center" 
+            <TextBox x:Name="tbProcessEnd" TextWrapping="Wrap" TextAlignment="Center" 
+                     Text="{Binding SelectedProcess.ProcEndFormatted, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
                      Width="65" Height="30" Margin="80,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                      FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbProcessEnd_TextChanged" />
             <ComboBox x:Name="cbReason" 
+                      Text="{Binding ElementName=tbReason, Path=Text, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
                       Width="440" Height="30" Margin="150,274,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                       FontSize="16" FontFamily="Bahnschrift Light" SelectionChanged="cbReason_SelectionChanged"/>
             <TextBox x:Name="tbReason" TextWrapping="Wrap" TextAlignment="Left" 
-                     Text="{Binding ElementName=cbReason, Path=Text, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                     Text="{Binding SelectedProcess.Reason, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                      Width="420" Height="30" Margin="150,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                      FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbReason_TextChanged"/>
             <Label Content="Start" 
