@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GettingReal_Jacobsens_Bakery.Model
+﻿namespace GettingReal_Jacobsens_Bakery.Model
 {
     public class Item
     {
@@ -57,8 +51,10 @@ namespace GettingReal_Jacobsens_Bakery.Model
             _recipeId = recipe;
         }
 
+        
         // Set method for when we get a ItemRepo, for setting the item from the ItemId
-        public void SetItem(int itemId, string name, int l1, int l2, int l3, int l4, int weight, string dimensions, int recipe) 
+        // This method could have been done with "private setters"
+        public void SetItem(int itemId, string name, int l1, int l2, int l3, int l4, int weight, string dimensions, int recipe)
         {
             _itemId = itemId;
             _name = name;
@@ -69,6 +65,13 @@ namespace GettingReal_Jacobsens_Bakery.Model
             _unitWeight = weight;
             _boxDimensions = dimensions;
             _recipeId = recipe;
+        }
+
+        public string ToString()
+        {
+
+            return ($"{_itemId};{_name};{_line[0]};{_line[1]};{_line[2]};{_line[3]}{_unitWeight};{_boxDimensions};{_recipeId}");
+
         }
 
     }

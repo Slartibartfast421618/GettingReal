@@ -1,17 +1,5 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GettingReal_Jacobsens_Bakery.View
 {
@@ -82,7 +70,7 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void tbDate_TextChanged(object sender, TextChangedEventArgs e)
         {   // DateTime setup dd/mm/yy - Consider accepting 6 length int (311299 -> 31/12/99)
-            
+
         }
 
         private void tbTimeStart_TextChanged(object sender, TextChangedEventArgs e)

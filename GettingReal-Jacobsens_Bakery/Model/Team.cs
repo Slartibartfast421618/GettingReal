@@ -12,11 +12,4 @@ namespace GettingReal_Jacobsens_Bakery.Model
         white,
         blue
     }
-    public enum Line
-    {
-        one,
-        two,
-        three,
-        four
-    }
 }

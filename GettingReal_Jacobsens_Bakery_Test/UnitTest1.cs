@@ -1,7 +1,5 @@
-using GettingReal_Jacobsens_Bakery;
-using GettingReal_Jacobsens_Bakery.ViewModel;
 using GettingReal_Jacobsens_Bakery.Model;
-using System.Security.Cryptography.Pkcs;
+using GettingReal_Jacobsens_Bakery.ViewModel;
 
 namespace GettingReal_Jacobsens_Bakery_Test
 {
