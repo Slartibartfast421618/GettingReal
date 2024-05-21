@@ -17,7 +17,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
         private Line _prodLine;
         private Team _prodTeam;
         private TimeSpan _downtimeDuration;
-        public ObservableCollection<ProductionProcess> PPRepo { get; } = new ObservableCollection<ProductionProcess>();
+        public ObservableCollection<ProductionProcess> PPRepo { get; set; } = new ObservableCollection<ProductionProcess>();
         public Employee EmployeeOne = new Employee();
         public Employee EmployeeTwo = new Employee();
         public ActiveRecipe Recipe = new ActiveRecipe();

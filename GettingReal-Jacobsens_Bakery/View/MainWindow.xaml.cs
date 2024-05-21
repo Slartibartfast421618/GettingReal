@@ -20,11 +20,17 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        PRRepo prr;
+
+
         NewReportWindow newReportWindow;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            prr = new PRRepo();
+            DataContext = prr;
         }
 
         private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -34,8 +40,10 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void btnNewReport_Click(object sender, RoutedEventArgs e)
         {   // Change window to NewReport
-            newReportWindow = new NewReportWindow();
-            newReportWindow.Show();
+            prr.NewLine();
+            newReportWindow = new NewReportWindow(prr.SelectedReport);
+            newReportWindow.ShowDialog();
+
         }
 
         private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)
@@ -43,6 +51,12 @@ namespace GettingReal_Jacobsens_Bakery.View
             
 
             Close();
+        }
+
+        private void btnCheckCurrentReportDate_Click(object sender, RoutedEventArgs e)
+        {
+            if (prr.SelectedReport != null) 
+                btnCheckCurrentReportDate.Content = prr.SelectedReport.DateFormatted;
         }
     }
 }

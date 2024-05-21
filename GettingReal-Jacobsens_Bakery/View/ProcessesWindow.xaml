@@ -63,7 +63,7 @@
                     Click="btnDeleteProcess_Click" 
                     FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
-            <Button x:Name="btnNavigateUp" Content="v" 
+            <Button x:Name="btnNavigateUp" Content="v" IsEnabled="False" Visibility="Collapsed" 
                     Height="40" Width="40" Margin="10,10,80,70" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                     Click="btnNavigateUp_Click" 
                     FontSize="20" FontFamily="Bahnschrift Light" 
@@ -77,7 +77,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="btnNavigateDown" Content="v" 
+            <Button x:Name="btnNavigateDown" Content="v" IsEnabled="False" Visibility="Collapsed" 
                     Height="40" Width="40" Margin="10,10,20,70" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                     Click="btnNavigateDown_Click" 
                     FontSize="20" FontFamily="Bahnschrift Light" 

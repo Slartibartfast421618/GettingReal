@@ -21,25 +21,25 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class ProcessesWindow : Window
     {
-        ProductionReport pr = new ProductionReport();
+        ProductionReport pr;
         ProductionProcess pp;
 
-        public ProcessesWindow()
+        public ProcessesWindow(ProductionReport productionReport)
         {
             InitializeComponent();
 
-            DataContext = pr;
+            this.pr = productionReport;
+            DataContext = this.pr;
             InitializeCommonProcesses();
         }
 
         private void livCurrentProcesses_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   // Currently 3 lines - Start, End, Comment
+        {   // Currently 3 lines - Start, End, Reason
 
         }
 
         private void btnAddProcess_Click(object sender, RoutedEventArgs e)
         {   // Add a blank process, and set it as the active selected item
-            //pr.NewProcess(pp);
             pr.AddDefaultProcess();
         }
 
@@ -79,7 +79,7 @@ namespace GettingReal_Jacobsens_Bakery.View
         }
 
         private void btnSaveAndBack_Click(object sender, RoutedEventArgs e)
-        {   // Make sure everything isvalidated and saved to file before closing window
+        {   // Make sure everything is validated and saved to file before closing window
 
 
             Close();

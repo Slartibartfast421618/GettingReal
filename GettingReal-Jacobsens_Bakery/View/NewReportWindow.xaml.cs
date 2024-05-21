@@ -21,23 +21,28 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class NewReportWindow : Window
     {
-        PRRepo prr = new PRRepo();
+        ProductionReport activeProductionReport;
+
         ProcessesWindow processesWindow;
 
-        public NewReportWindow()
+        public NewReportWindow(ProductionReport selectedProductionReport)
         {
             InitializeComponent();
-
-            DataContext = prr;
-            processesWindow = new ProcessesWindow();
             InitializeTeamsAndLines();
-            prr.NewLine();
+
+            this.activeProductionReport = selectedProductionReport;
+            DataContext = this.activeProductionReport;
         }
 
         private void btnProcess_Click(object sender, RoutedEventArgs e)
         {   // Access current production's processes
-            processesWindow = new ProcessesWindow();
-            processesWindow.Show();
+            if (processesWindow == null || processesWindow.IsVisible == false)
+            {
+                processesWindow = new ProcessesWindow(activeProductionReport);
+                processesWindow.Show();
+            }
+            else
+                processesWindow.Focus();
             // MISSING PROCESS INFORMATION!! how do?
             // Currently forgets processes,
             // but surely we can grab the list off of somewhere
@@ -95,6 +100,11 @@ namespace GettingReal_Jacobsens_Bakery.View
             cbLine.Items.Add("3");
             cbLine.Items.Add("4");
             // REMINDER!! This layer is not allowed to look directly at the enums class
+        }
+
+        private void btnCheckProcessCount_Click(object sender, RoutedEventArgs e)
+        {
+            btnCheckProcessCount.Content = activeProductionReport.ProdTeam.PPRepo.Count();
         }
     }
 }

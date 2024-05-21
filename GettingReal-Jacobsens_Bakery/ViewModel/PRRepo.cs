@@ -11,7 +11,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
     public class PRRepo : INotifyPropertyChanged
     {
         private ProductionReport _selectedReport;
-        ObservableCollection<ProductionReport> ReportRepo { get; set; } = new ObservableCollection<ProductionReport>();
+        public ObservableCollection<ProductionReport> ReportRepo { get; set; } = new ObservableCollection<ProductionReport>();
 
         public ProductionReport SelectedReport
         {
@@ -25,11 +25,14 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 
 
 
+
         public void NewLine()
         {
-            SelectedReport = new ProductionReport();
-            ReportRepo.Add(SelectedReport);
-            OnPropertyChanged(nameof(ReportRepo));
+            //SelectedReport = new ProductionReport();
+            ProductionReport newReport = new ProductionReport();
+            ReportRepo.Add(newReport);
+            SelectedReport = newReport;
+            OnPropertyChanged(nameof(SelectedReport));
         }
 
 

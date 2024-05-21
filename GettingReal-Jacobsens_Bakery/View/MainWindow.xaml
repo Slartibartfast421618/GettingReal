@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingReal_Jacobsens_Bakery.View"
+        xmlns:viewmodel="clr-namespace:GettingReal_Jacobsens_Bakery.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ProductionReport}"
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="WidthAndHeight">
     <Grid Height="434" Width="600">
@@ -14,30 +15,85 @@
         </Grid>
 
         <Grid Height="254" Width="600" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,120,0,0">
-            <ScrollViewer Width="600" HorizontalAlignment="Left">
-                <ListView x:Name="livCurrentReports" ItemsSource="{Binding ReportRepo}" SelectedItem="{Binding SelectedReport, Mode=TwoWay}"
-                          SelectionChanged="livCurrentReports_SelectionChanged" Width="582" Margin="0,0,0,0" HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=5}">
-                    <ListView.Resources>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Start tid" Width="80"/>
-                            <GridViewColumn Header="Slut tid" Width="80"/>
-                            <GridViewColumn Header="P.Ordre" Width="80"/>
-                            <GridViewColumn Header="Varenummer" Width="80"/>
-                            <GridViewColumn Header="Antal kasser" Width="80"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </ScrollViewer>
+            <ListView x:Name="livCurrentReports" 
+                      ItemsSource="{Binding ReportRepo}" 
+                      SelectedItem="{Binding SelectedReport, Mode=TwoWay}"
+                      SelectionChanged="livCurrentReports_SelectionChanged" 
+                      Width="600" Margin="0,0,0,0" HorizontalAlignment="Left" 
+                      d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Dato" Width="60">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Date}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Hold" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Team}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Linje" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Line}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Start tid" Width="60">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProdStartFormatted}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Slut tid" Width="60">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProdEndFormatted}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="P.Ordre" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProdOrderId}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Varenummer" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ItemId}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Forløbstid" Width="60">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DowntimeDuration}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
         <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#FFDDDDED">
             <Button x:Name="btnNewReport" Content="Ny rapport" Height="40" Width="150" Margin="275,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnNewReport_Click" FontSize="20" FontFamily="Bahnschrift Light" BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
             <Button x:Name="btnSaveAndExit" Content="Gem og afslut" Height="40" Width="150" Margin="440,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnSaveAndExit_Click" FontSize="20" FontFamily="Bahnschrift Light" BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+            <Button x:Name="btnCheckCurrentReportDate" Content="Button" 
+                    HorizontalAlignment="Left" Margin="27,0,0,0" VerticalAlignment="Center" Click="btnCheckCurrentReportDate_Click"/>
 
         </Grid>
 

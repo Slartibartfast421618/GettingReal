@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingReal_Jacobsens_Bakery.View"
+        xmlns:viewmodel="clr-namespace:GettingReal_Jacobsens_Bakery.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ProductionReport}"
         mc:Ignorable="d"
         Title="NewReportWindow" SizeToContent="WidthAndHeight">
     <Grid Height="434" Width="600">
@@ -24,15 +25,15 @@
                       HorizontalAlignment="Center" VerticalAlignment="Top" 
                       FontSize="24" FontFamily="Bahnschrift Light" 
                       SelectionChanged="cbLine_SelectionChanged"/>
-            <TextBox x:Name="tbPOrder" Text="{Binding SelectedReport.ProdOrderId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbPOrder" Text="{Binding ProdOrderId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,20,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
-            <TextBox x:Name="tbWareNum" Text="{Binding SelectedReport.ItemId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbWareNum" Text="{Binding ItemId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
-            <Label x:Name="lblRecipeNum" Content="{Binding SelectedReport.RecipeId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+            <Label x:Name="lblRecipeNum" Content="{Binding RecipeId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
                    Height="40" Width="160" Margin="0,80,0,0" 
                    HorizontalAlignment="Center" VerticalAlignment="Top" 
                    FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
@@ -41,15 +42,15 @@
                     Click="btnProcess_Click" 
                     FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
-            <TextBox x:Name="tbCrumbles" Text="{Binding SelectedReport.Crumbles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbCrumbles" Text="{Binding Crumbles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="20,140,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
-            <TextBox x:Name="tbSpillage" Text="{Binding SelectedReport.Spillage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbSpillage" Text="{Binding Spillage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,140,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Center" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
-            <TextBox x:Name="tbTotalBoxes" Text="{Binding SelectedReport.BoxesProduced, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="tbTotalBoxes" Text="{Binding BoxesProduced, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,140,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
@@ -80,7 +81,7 @@
             <Label Content="Antal kasser" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,125,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbDate" Text="{Binding SelectedReport.DateFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+            <TextBox x:Name="tbDate" Text="{Binding DateFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
                      Height="40" Width="160" Margin="20,200,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
@@ -89,7 +90,7 @@
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbTimeStart" Text="{Binding SelectedReport.ProdStartFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+            <TextBox x:Name="tbTimeStart" Text="{Binding ProdStartFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
                      Height="40" Width="160" Margin="0,200,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Center" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
@@ -98,7 +99,7 @@
                    Height="20" Width="160"
                    HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
-            <TextBox x:Name="tbTimeEnd" Text="{Binding SelectedReport.ProdEndFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+            <TextBox x:Name="tbTimeEnd" Text="{Binding ProdEndFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
                      Height="40" Width="160" Margin="0,200,20,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
@@ -129,6 +130,9 @@
                     </TransformGroup>
                 </CheckBox.RenderTransform>
             </CheckBox>
+            <Button x:Name="btnCheckProcessCount" Content="" 
+                    Height="20" Width="40"
+                    HorizontalAlignment="Left" Margin="42,22,0,0" VerticalAlignment="Top" Click="btnCheckProcessCount_Click"/>
 
         </Grid>
 
