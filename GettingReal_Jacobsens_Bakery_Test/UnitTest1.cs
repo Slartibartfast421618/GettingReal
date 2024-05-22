@@ -31,8 +31,8 @@ namespace GettingReal_Jacobsens_Bakery_Test
             Report = new ProductionReport()
             {
                 Date = DateTime.Today,
-                Line = Line.one,
-                Team = Team.red,
+                Line = EnumLine.one,
+                Team = EnumTeam.red,
                 SigOne = "Lars Hansen",
                 SigTwo = "Mette Boldt",
                 RecipeId = 381121,
@@ -56,8 +56,8 @@ namespace GettingReal_Jacobsens_Bakery_Test
         public void TestOfProdTeam()
         {
             Assert.AreEqual(DateTime.Today, Report.Date);
-            Assert.AreEqual(Line.one, Report.Line);
-            Assert.AreEqual(Team.red, Report.Team);
+            Assert.AreEqual(EnumLine.one, Report.Line);
+            Assert.AreEqual(EnumTeam.red, Report.Team);
             Assert.AreEqual("Lars Hansen", Report.SigOne);
         }
         [TestMethod]

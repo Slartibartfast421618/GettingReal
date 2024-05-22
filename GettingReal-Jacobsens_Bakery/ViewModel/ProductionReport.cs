@@ -1,4 +1,6 @@
 ﻿using GettingReal_Jacobsens_Bakery.Model;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Windows.Shapes;
 
 namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
@@ -12,12 +14,12 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.Date; }
             set { ProdTeam.Date = value; }
         }
-        public Line Line
+        public EnumLine Line
         {
             get { return ProdTeam.ProdLine; }
             set { ProdTeam.ProdLine = value; }
         }
-        public Team Team
+        public EnumTeam Team
         {
             get { return ProdTeam.ProdTeam; }
             set { ProdTeam.ProdTeam = value; }
@@ -104,6 +106,31 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public void SetItem(int itemId, string name, int l1, int l2, int l3, int l4, int weight, string dimensions, int recipe)
         {
             ProdTeam.Recipe.Production.ProdItem.SetItem(itemId, name, l1, l2, l3, l4, weight, dimensions, recipe);
+        }
+
+        public ProductionReport(DateTime date, EnumTeam prodTeam, EnumLine line, string employeeOne, string employeeTwo, int recipeId, int crumbles, DateTime prodStart, DateTime prodEnd, string prodOrderId, int boxesProduced, int itemId, int recipe)
+        {
+            Date = date;
+            Team = prodTeam;
+            Line = line;
+            SigOne = employeeOne;
+            SigTwo = employeeTwo;
+            RecipeId = recipeId;
+            Crumbles = crumbles;
+            ProdStart = prodStart;
+            ProdEnd = prodEnd;
+            ProdOrderId = prodOrderId;
+            BoxesProduced = boxesProduced;
+            SetItem(itemId, recipe);
+        }
+
+        public ProductionReport()
+        {
+        }
+
+        public string ToString()
+        {
+            return ($"{Date};{Team};{Line};{SigOne};{SigTwo};{RecipeId};{Crumbles};{ProdStart};{ProdEnd};{ProdOrderId};{BoxesProduced};{ItemId};{Recipe};");
         }
     }
 }

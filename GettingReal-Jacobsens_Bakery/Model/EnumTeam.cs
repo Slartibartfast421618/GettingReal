@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GettingReal_Jacobsens_Bakery.Model
 {
-    public enum Team
+    public enum EnumTeam
     {
         red,
         white,
