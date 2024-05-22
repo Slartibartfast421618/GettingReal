@@ -24,6 +24,13 @@ namespace GettingReal_Jacobsens_Bakery.Model
 
 
 
+        public ProductionTeam()
+        {
+            PPRepo.CollectionChanged += PPRepo_CollectionChanged;
+        }
+
+
+
         public DateTime Date
         {
             get { return _date; }
@@ -84,7 +91,10 @@ namespace GettingReal_Jacobsens_Bakery.Model
 
         public TimeSpan DowntimeDuration
         {
-            get { return _downtimeDuration; }
+            get 
+            {
+                return CalculateTotalProcessDowntime();
+            }
         }
 
         // methods for administering the Production Process Repo
@@ -98,13 +108,14 @@ namespace GettingReal_Jacobsens_Bakery.Model
             PPRepo.Add(pr);
             OnPropertyChanged(nameof(PPRepo));
         }
-        public void CalculateTotalProcessDowntime()
+        private TimeSpan CalculateTotalProcessDowntime()
         {
-            _downtimeDuration = TimeSpan.Parse("00:00:00");
-            foreach (ProductionProcess process in PPRepo)
+            TimeSpan totalDowntime = TimeSpan.Zero;
+            foreach (var process in PPRepo)
             {
-                _downtimeDuration = _downtimeDuration + process.DowntimeDuration();
+                totalDowntime += process.ProcDowntime;
             }
+            return totalDowntime;
         }
 
         public ProductionProcess GetProductionProcess()
@@ -117,6 +128,36 @@ namespace GettingReal_Jacobsens_Bakery.Model
         }
 
 
+
+        // PPRepo CollectionChanged handler
+        private void PPRepo_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (ProductionProcess pp in e.NewItems)
+                {
+                    pp.PropertyChanged += ProductionProcess_PropertyChanged;
+                }
+            }
+
+            if (e.OldItems != null)
+            {
+                foreach (ProductionProcess pp in e.OldItems)
+                {
+                    pp.PropertyChanged -= ProductionProcess_PropertyChanged;
+                }
+            }
+
+            OnPropertyChanged(nameof(DowntimeDuration));
+        }
+
+        private void ProductionProcess_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(ProductionProcess.ProcDowntime))
+            {
+                OnPropertyChanged(nameof(DowntimeDuration));
+            }
+        }
 
         // INotifyPropertyChanged handler
         public event PropertyChangedEventHandler PropertyChanged;

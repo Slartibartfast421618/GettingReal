@@ -42,7 +42,7 @@ namespace GettingReal_Jacobsens_Bakery.View
         {   // Change window to NewReport
             prr.NewLine();
             newReportWindow = new NewReportWindow(prr.SelectedReport);
-            newReportWindow.ShowDialog();
+            newReportWindow.Show();
 
         }
 
@@ -53,10 +53,29 @@ namespace GettingReal_Jacobsens_Bakery.View
             Close();
         }
 
-        private void btnCheckCurrentReportDate_Click(object sender, RoutedEventArgs e)
+        private void btnCheckCurrentReport_Click(object sender, RoutedEventArgs e)
         {
-            if (prr.SelectedReport != null) 
-                btnCheckCurrentReportDate.Content = prr.SelectedReport.DateFormatted;
+            //if (prr.SelectedReport != null)
+            //    btnCheckCurrentReportDate.Content = prr.SelectedReport.DateFormatted;
+            if (livCurrentReports.SelectedIndex > -1)
+            {
+                newReportWindow = new NewReportWindow(prr.SelectedReport);
+                newReportWindow.Show();
+            }
+
+        }
+
+        private void btnCheckCurrentReportDowntime_Click(object sender, RoutedEventArgs e)
+        {
+            if (livCurrentReports.SelectedIndex > -1)
+            {
+                btnCheckCurrentReportDowntime.Content = prr.SelectedReport.DowntimeDuration;
+            }
+        }
+
+        private void btnCheckReportOneDowntime_Click(object sender, RoutedEventArgs e)
+        {
+            btnCheckReportOneDowntime.Content = prr.ReportRepo[0].DowntimeDuration;
         }
     }
 }

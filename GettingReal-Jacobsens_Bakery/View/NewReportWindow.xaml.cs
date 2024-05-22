@@ -36,16 +36,9 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void btnProcess_Click(object sender, RoutedEventArgs e)
         {   // Access current production's processes
-            if (processesWindow == null || processesWindow.IsVisible == false)
-            {
-                processesWindow = new ProcessesWindow(activeProductionReport);
-                processesWindow.Show();
-            }
-            else
-                processesWindow.Focus();
-            // MISSING PROCESS INFORMATION!! how do?
-            // Currently forgets processes,
-            // but surely we can grab the list off of somewhere
+            processesWindow = new ProcessesWindow(activeProductionReport);
+            processesWindow.Show();
+            //activeProductionReport.ProdTeam.CalculateTotalProcessDowntime();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

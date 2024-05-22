@@ -28,11 +28,9 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 
         public void NewLine()
         {
-            //SelectedReport = new ProductionReport();
             ProductionReport newReport = new ProductionReport();
             ReportRepo.Add(newReport);
             SelectedReport = newReport;
-            OnPropertyChanged(nameof(SelectedReport));
         }
 
 

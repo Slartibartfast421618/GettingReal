@@ -25,6 +25,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
                 {
                     _procStart = value;
                     OnPropertyChanged(nameof(ProcStart));
+                    OnPropertyChanged(nameof(ProcDowntime));
                 }
             }
         }
@@ -60,6 +61,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
                 else 
                     _procStart = DateTime.MinValue;
                 OnPropertyChanged(nameof(ProcStartFormatted));
+                OnPropertyChanged(nameof(ProcDowntime));
             }
         }
 
@@ -72,6 +74,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
                 {
                     _procEnd = value;
                     OnPropertyChanged(nameof(ProcEnd));
+                    OnPropertyChanged(nameof(ProcDowntime));
                 }
             }
         }
@@ -107,6 +110,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
                 else
                     _procEnd = DateTime.MinValue;
                 OnPropertyChanged(nameof(ProcEndFormatted));
+                OnPropertyChanged(nameof(ProcDowntime));
             }
         }
 
@@ -121,6 +125,12 @@ namespace GettingReal_Jacobsens_Bakery.Model
                     OnPropertyChanged(nameof(Reason));
                 }
             }
+        }
+
+        public TimeSpan ProcDowntime
+        {
+            get => DowntimeDuration();
+
         }
 
         public ProductionProcess() { }
@@ -141,7 +151,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
         public TimeSpan DowntimeDuration()
         {
             // Making sure it works correctly for times passing midnight
-            if (ProcEnd > ProcStart)
+            if (ProcEnd >= ProcStart)
                 return ProcEnd - ProcStart;
             else
                 return ProcEnd.AddHours(24) - ProcStart;

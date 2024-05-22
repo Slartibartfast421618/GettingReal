@@ -45,12 +45,20 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public Line Line
         {
             get { return ProdTeam.ProdLine; }
-            set { ProdTeam.ProdLine = value; }
+            set 
+            { 
+                ProdTeam.ProdLine = value;
+                OnPropertyChanged(nameof(Line));
+            }
         }
         public Team Team
         {
             get { return ProdTeam.ProdTeam; }
-            set { ProdTeam.ProdTeam = value; }
+            set 
+            { 
+                ProdTeam.ProdTeam = value;
+                OnPropertyChanged(nameof(Team));
+            }
         }
 
         //Properties and methods for reporting downtime durations, and a getter for the downtimeduration prop.
@@ -69,7 +77,13 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             ProdTeam.AddProductionProcess(process);
             SelectedProcess = process;
         }
-        public TimeSpan DowntimeDuration { get { return ProdTeam.DowntimeDuration; } }
+        public TimeSpan DowntimeDuration 
+        { 
+            get
+            {
+                return ProdTeam.DowntimeDuration;
+            }
+        }
         public void DeleteProcess(int id)
         {
             if (id < ProdTeam.PPRepo.Count && id >= 0)
@@ -121,7 +135,11 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public string ProdStartFormatted
         {
             get { return ProdTeam.Recipe.Production.ProdStartFormatted; }
-            set { ProdTeam.Recipe.Production.ProdStartFormatted = value; }
+            set 
+            { 
+                ProdTeam.Recipe.Production.ProdStartFormatted = value;
+                OnPropertyChanged(nameof(ProdStartFormatted));
+            }
         }
         public DateTime ProdEnd
         {
@@ -131,24 +149,40 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public string ProdEndFormatted
         {
             get { return ProdTeam.Recipe.Production.ProdEndFormatted; }
-            set { ProdTeam.Recipe.Production.ProdEndFormatted = value; }
+            set 
+            { 
+                ProdTeam.Recipe.Production.ProdEndFormatted = value;
+                OnPropertyChanged(nameof(ProdEndFormatted));
+            }
         }
         public string ProdOrderId
         {
             get { return ProdTeam.Recipe.Production.ProdOrderId; }
-            set { ProdTeam.Recipe.Production.ProdOrderId = value; }
+            set 
+            { 
+                ProdTeam.Recipe.Production.ProdOrderId = value;
+                OnPropertyChanged(nameof(ProdOrderId));
+            }
         }
         public int BoxesProduced
         {
             get { return ProdTeam.Recipe.Production.BoxesProduced; }
-            set { ProdTeam.Recipe.Production.BoxesProduced = value; }
+            set 
+            { 
+                ProdTeam.Recipe.Production.BoxesProduced = value;
+                OnPropertyChanged(nameof(BoxesProduced));
+            }
         }
 
         // Get and set methods for the produced item, located in the Item class.
         public int ItemId
         {
             get { return ProdTeam.Recipe.Production.ProdItem.ItemId; }
-            set { ProdTeam.Recipe.Production.ProdItem.ItemId = value; }
+            set 
+            { 
+                ProdTeam.Recipe.Production.ProdItem.ItemId = value;
+                OnPropertyChanged(nameof(ItemId));
+            }
         }
         public int Recipe
         {
