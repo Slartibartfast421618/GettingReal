@@ -72,15 +72,6 @@ namespace GettingReal_Jacobsens_Bakery.Model
         }
         public Item() 
         {
-            //_itemId = 0;
-            //_name = "Selected Item name";
-            //_line[0] = 0;
-            //_line[1] = 0;
-            //_line[2] = 0;
-            //_line[3] = 0;
-            //_unitWeight = 0;
-            //_boxDimensions = "Selected Items box dimensions";
-            //_recipeId = 0;
         }
 
         // Set method for the UnitTest

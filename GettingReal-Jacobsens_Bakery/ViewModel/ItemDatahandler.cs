@@ -14,9 +14,8 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
     public class ItemDatahandler
     {
-        public string FileName = "ItemRepo.txt";
-        public string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        ItemRepo ItemRepo;
+        private string FileName = "ItemRepo.txt";
+        private string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         
 
         public void SaveItems(ObservableCollection<Item> repo, string fileName)

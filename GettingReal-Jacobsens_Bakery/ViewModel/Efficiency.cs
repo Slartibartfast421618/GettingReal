@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
-    class Efficiency
+    public class Efficiency
     {
+        public ItemRepo ItemRepo = new ItemRepo();
     }
 }

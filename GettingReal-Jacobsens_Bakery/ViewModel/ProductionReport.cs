@@ -10,6 +10,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
     public class ProductionReport
     {
         public ProductionTeam ProdTeam = new ProductionTeam();
+        public PRRepo repo = new PRRepo();
 
         // Get and set methods for the properties in the Production Team class.
         public DateTime Date
@@ -57,7 +58,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public int RecipeId
         {
             get { return ProdTeam.Recipe.RecipeId; }
-            set { ProdTeam.Recipe.RecipeId = value; }
+            set {  ProdTeam.Recipe.RecipeId = value;  }
         }
         public int Crumbles
         {
@@ -102,13 +103,19 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         {
             get { return ProdTeam.Recipe.Production.ProdItem.RecipeId; }
         }
-        public void SetItem(int Item, int Recipe)
+        public Item ProdItem
         {
-            ProdTeam.Recipe.Production.ProdItem.SetItem(Item, Recipe);
+            get { return ProdTeam.Recipe.Production.ProdItem; }
         }
-        public void SetItem(int itemId, string name, int l1, int l2, int l3, int l4, int weight, string dimensions, int recipe)
+        public void SetItem(int itemId)
         {
-            ProdTeam.Recipe.Production.ProdItem.SetItem(itemId, name, l1, l2, l3, l4, weight, dimensions, recipe);
+            ProdTeam.Recipe.Production.ProdItem = repo.GetItem(itemId);
+            RecipeId = Recipe;
+        }
+        public void SetItem(Item item)
+        {
+            ProdTeam.Recipe.Production.ProdItem = item;
+            RecipeId = item.RecipeId;
         }
     }
 }

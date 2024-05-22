@@ -13,7 +13,6 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
     {
         public ObservableCollection<Item> Items = new ObservableCollection<Item>();
         public ItemDatahandler datahandler = new ItemDatahandler();
-        public Item SelectedItem { get; set; }
         public Item FindItem(int id)
         {
             Item SelectedItem = null;
@@ -31,9 +30,9 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         {
             return Items;
         }
-        public void AddItem(int id, string name, int l0, int l1, int l2, int l3, int weight, string dimension, int recipe)
+        public void AddItem(int id, string name, int line0, int line1, int line2, int line3, int weight, string dimension, int recipe)
         {
-            Item item = new Item(id, name, l0, l1, l2, l3, weight, dimension, recipe );
+            Item item = new Item(id, name, line0, line1, line2, line3, weight, dimension, recipe );
             Items.Add(item);
         }
         public void NewItem()
