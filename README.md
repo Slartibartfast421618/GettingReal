@@ -24,12 +24,12 @@ _In the following section, always replace BRANCH_NAME with the name you want for
 ### Commit and push changes to remote
 _Congratulations, you've written some ~~great~~ code, and you're either done with it, need ~~help with~~ it review, haven't pushed in a few days, or you're going on vacation tomorrow.\
 Commits should preferably be done every time you've hit some sort of breakpoint, such as a section being done.\
-Pushes don't have to happen every commit, but should be often enough that others can keep reasonable track of your progress._\
+Pushes don't have to happen every commit, but should be often enough that others can keep reasonable track of your progress._
 1) Add your changes to staging. There's a couple of ways to do this:\
      git add -A  _Adds everything_\
      git add .  _Adds everything in currently accessed folder and subfolders_\
      git add -u  _Adds all updated/changed files. This does_ **NOT** _add new files!!_\
-     git add FILE_NAME.EXT  _Adds specifically FILE_NAME.EXT_\
+     git add FILE_NAME.EXT  _Adds specifically FILE_NAME.EXT_
 2) Commit changes. Make sure to give a descriptive message!\
      git commit -m "A perfect description of the changes made, without being too lo-"
 3) Push changes\
