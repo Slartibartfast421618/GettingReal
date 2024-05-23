@@ -1,5 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using GettingReal_Jacobsens_Bakery.ViewModel;
+
 
 namespace GettingReal_Jacobsens_Bakery.View
 {
@@ -8,29 +16,37 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class NewReportWindow : Window
     {
-        readonly ProcessesWindow processesWindow;
+        ProductionReport activeProductionReport;
 
-        public NewReportWindow()
+        ProcessesWindow processesWindow;
+
+        public NewReportWindow(ProductionReport selectedProductionReport)
         {
             InitializeComponent();
-
-            processesWindow = new ProcessesWindow();
             InitializeTeamsAndLines();
+
+            this.activeProductionReport = selectedProductionReport;
+            DataContext = this.activeProductionReport;
         }
 
         private void btnProcess_Click(object sender, RoutedEventArgs e)
         {   // Access current production's processes
+            processesWindow = new ProcessesWindow(activeProductionReport);
             processesWindow.Show();
+            //activeProductionReport.ProdTeam.CalculateTotalProcessDowntime();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
-        {   // Needs to check all information boxes for invalids/missing, then send signature window whether it needs 1 or 2 signees
+        {   // Needs to check all information boxes for invalids/missing,
+            // then send signature window whether it needs 1 or 2 signees
 
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
-        {   // Close window and (maybe) abandon information, should have a confirmation window if any data has been entered!
+        {   // Close window and (maybe) abandon information,
+            // should have a confirmation window if any data has been entered!
             Close();
+            // CHECK NOTES ABOVE!!
         }
 
         private void cbTeam_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -43,62 +59,41 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         }
 
-        private void tbPOrder_TextChanged(object sender, TextChangedEventArgs e)
-        {   // Naïve, can't be checked without accessing ERP system. Potentially check string length?
-
-        }
-
-        private void tbWareNum_TextChanged(object sender, TextChangedEventArgs e)
-        {   // Needs to set lblRecipeNum from information parsed through database
-
-        }
-
-        private void tbCrumbles_TextChanged(object sender, TextChangedEventArgs e)
-        {   // "Rasp", should print be suffixed with kg?
-
-        }
-
-        private void tbSpillage_TextChanged(object sender, TextChangedEventArgs e)
-        {   // "Opfej", should print be suffixed with kg?
-
-        }
-
-        private void tbTotalBoxes_TextChanged(object sender, TextChangedEventArgs e)
-        {   // Check negative or zero, otherwise accept
-
-        }
-
-        private void tbDate_TextChanged(object sender, TextChangedEventArgs e)
-        {   // DateTime setup dd/mm/yy - Consider accepting 6 length int (311299 -> 31/12/99)
-
-        }
-
-        private void tbTimeStart_TextChanged(object sender, TextChangedEventArgs e)
-        {   // DateTime or TimeSpan? Setup hh:mm - Consider accepting 4 length int (2359 -> 23:59)
-
-        }
-
-        private void tbTimeEnd_TextChanged(object sender, TextChangedEventArgs e)
-        {   // DateTime or TimeSpan? Setup hh:mm - Consider accepting 4 length int (2359 -> 23:59)
-
-        }
 
         private void chkWeightCheck_Checked(object sender, RoutedEventArgs e)
-        {   // Wasn't needed often, so for MVP we run this naïve and never require it, but do note it in our final information dump
+        {   // Wasn't needed often, so for MVP we run this naïve and never require it,
+            // but do note it in our final information dump
 
         }
+
+
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {   // For quickly being able to overwrite current content
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+                textBox.SelectAll();
+        }   // Doesn't work with mouse selecting
 
 
 
         private void InitializeTeamsAndLines()
-        {   // Initialize from Team and Line enums! Temporary implementation for now, do foreach in proper implementation
+        {   // Initialize from Team and Line enums! Temporary implementation for now,
+            // do foreach in proper implementation
             cbTeam.Items.Add("Blå");
             cbTeam.Items.Add("Rød");
             cbTeam.Items.Add("Hvid");
+
             cbLine.Items.Add("1");
             cbLine.Items.Add("2");
             cbLine.Items.Add("3");
             cbLine.Items.Add("4");
+            // REMINDER!! This layer is not allowed to look directly at the enums class
+        }
+
+        private void btnCheckProcessCount_Click(object sender, RoutedEventArgs e)
+        {
+            btnCheckProcessCount.Content = activeProductionReport.ProdTeam.PPRepo.Count();
         }
     }
 }

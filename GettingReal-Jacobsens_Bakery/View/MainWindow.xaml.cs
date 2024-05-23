@@ -1,5 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using GettingReal_Jacobsens_Bakery.ViewModel;
+
 
 namespace GettingReal_Jacobsens_Bakery.View
 {
@@ -8,13 +16,17 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly NewReportWindow newReportWindow;
+        PRRepo prr;
+
+
+        NewReportWindow newReportWindow;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            newReportWindow = new NewReportWindow();
+            prr = new PRRepo();
+            DataContext = prr;
         }
 
         private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -24,10 +36,10 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void btnNewReport_Click(object sender, RoutedEventArgs e)
         {   // Change window to NewReport
+            prr.NewLine();
+            newReportWindow = new NewReportWindow(prr.SelectedReport);
             newReportWindow.Show();
 
-            // Now it just needs to know which data to read, if selected from the list,
-            // or that it needs to have new datafields
         }
 
         private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)
@@ -35,6 +47,31 @@ namespace GettingReal_Jacobsens_Bakery.View
 
 
             Close();
+        }
+
+        private void btnCheckCurrentReport_Click(object sender, RoutedEventArgs e)
+        {
+            //if (prr.SelectedReport != null)
+            //    btnCheckCurrentReportDate.Content = prr.SelectedReport.DateFormatted;
+            if (livCurrentReports.SelectedIndex > -1)
+            {
+                newReportWindow = new NewReportWindow(prr.SelectedReport);
+                newReportWindow.Show();
+            }
+
+        }
+
+        private void btnCheckCurrentReportDowntime_Click(object sender, RoutedEventArgs e)
+        {
+            if (livCurrentReports.SelectedIndex > -1)
+            {
+                btnCheckCurrentReportDowntime.Content = prr.SelectedReport.DowntimeDuration;
+            }
+        }
+
+        private void btnCheckReportOneDowntime_Click(object sender, RoutedEventArgs e)
+        {
+            btnCheckReportOneDowntime.Content = prr.ReportRepo[0].DowntimeDuration;
         }
     }
 }

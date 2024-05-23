@@ -1,5 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using GettingReal_Jacobsens_Bakery.Model;
+using GettingReal_Jacobsens_Bakery.ViewModel;
 
 namespace GettingReal_Jacobsens_Bakery.View
 {
@@ -8,26 +16,31 @@ namespace GettingReal_Jacobsens_Bakery.View
     /// </summary>
     public partial class ProcessesWindow : Window
     {
-        public ProcessesWindow()
+        ProductionReport pr;
+        ProductionProcess pp;
+
+        public ProcessesWindow(ProductionReport productionReport)
         {
             InitializeComponent();
 
+            this.pr = productionReport;
+            DataContext = this.pr;
             InitializeCommonProcesses();
         }
 
         private void livCurrentProcesses_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   // Currently 3 lines - Start, End, Comment
+        {   // Currently 3 lines - Start, End, Reason
 
         }
 
         private void btnAddProcess_Click(object sender, RoutedEventArgs e)
         {   // Add a blank process, and set it as the active selected item
-
+            pr.AddDefaultProcess();
         }
 
         private void btnDeleteProcess_Click(object sender, RoutedEventArgs e)
         {   // Remove selected process
-
+            pr.DeleteProcess(livCurrentProcesses.SelectedIndex);
         }
 
         private void btnNavigateUp_Click(object sender, RoutedEventArgs e)
@@ -52,7 +65,7 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void tbReason_TextChanged(object sender, TextChangedEventArgs e)
         {   // Gets written over by cbReason, but allows custom messages
-
+            cbReason.SelectedItem = null;
         }
 
         private void cbReason_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,7 +74,7 @@ namespace GettingReal_Jacobsens_Bakery.View
         }
 
         private void btnSaveAndBack_Click(object sender, RoutedEventArgs e)
-        {   // Make sure everything isvalidated and saved to file before closing window
+        {   // Make sure everything is validated and saved to file before closing window
 
 
             Close();
@@ -69,7 +82,7 @@ namespace GettingReal_Jacobsens_Bakery.View
 
 
         private void InitializeCommonProcesses()
-        {   // These could be from an enum class, but we're simply setting them here for now
+        {   // These could be from an enum class or imported from a document, but we're simply setting them here for now
             cbReason.Items.Add("Omstilling");
             cbReason.Items.Add("Reparation prægemaskine");
             cbReason.Items.Add("Sprædebånd gået i stå");
