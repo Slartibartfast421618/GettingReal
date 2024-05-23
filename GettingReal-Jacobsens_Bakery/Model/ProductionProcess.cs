@@ -141,12 +141,18 @@ namespace GettingReal_Jacobsens_Bakery.Model
             DateTime.TryParse(processEnd, out _procEnd);
             _reason = comment;
         }
+        public ProductionProcess(DateTime processStart, DateTime processEnd, string comment)
+        {
+            _procStart = processStart;
+            _procEnd = processEnd;
+            _reason = comment;
+        }
 
 
 
         public override string ToString()
         {
-            return $"ProcessStart: {_procStart}, ProcessEnd: {_procEnd}, Reason: {_reason}";
+            return $"{_procStart};{_procEnd};{_reason}";
         }
 
         public TimeSpan DowntimeDuration()

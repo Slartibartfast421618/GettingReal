@@ -1,6 +1,7 @@
 ﻿using GettingReal_Jacobsens_Bakery.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -78,37 +79,42 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                         {
                             string[] parts = line.Trim().Split(';');
 
-                            if (parts.Length != 12)
+                            if (parts.Length == 12)
                             {
-                                throw new InvalidDataException("Dataformat in file not correct");
+                                DateTime.TryParse(parts[0], out DateTime Date);
+                                EnumTeam.TryParse(parts[1], out EnumTeam ProdTeam);
+                                EnumLine.TryParse(parts[2], out EnumLine ProdLine);
+                                string EmployeeOne = parts[3];
+                                string EmployeeTwo = parts[4];
+                                int.TryParse(parts[5], out int RecipeId);
+                                int.TryParse(parts[6], out int Crumbles);
+                                DateTime.TryParse(parts[7], out DateTime ProdStart);
+                                DateTime.TryParse(parts[8], out DateTime ProdEnd);
+                                string ProdOrderId = parts[9];
+                                int.TryParse(parts[10], out int BoxesProduced);
+                                int.TryParse(parts[11], out int ItemId);
+
+                                ProductionReport productionReport = new ProductionReport
+                                    (Date, ProdTeam, ProdLine, EmployeeOne, EmployeeTwo,
+                                    RecipeId, Crumbles, ProdStart, ProdEnd, ProdOrderId,
+                                    BoxesProduced, ItemId);
+                                ReportRepo.Add(productionReport);
                             }
+                            else if (parts.Length == 3)
+                            {
+                                DateTime.TryParse(parts[0], out DateTime ProcStart);
+                                DateTime.TryParse(parts[1], out DateTime ProcEnd);
+                                string ProcReason = parts[2];
+                                ProductionProcess addProcess = new ProductionProcess(ProcStart, ProcEnd, ProcReason);
+                                ReportRepo[0].NewProcess(addProcess);
+                            }
+                            else
+                                throw new InvalidDataException("Dataformat in file not correct");
 
-                            DateTime.TryParse(parts[0], out DateTime Date);
-                            EnumTeam.TryParse(parts[1], out EnumTeam ProdTeam);
-                            EnumLine.TryParse(parts[2], out EnumLine ProdLine);
-                            string EmployeeOne = parts[3];
-                            string EmployeeTwo = parts[4];
-                            int.TryParse(parts[5], out int RecipeId);
-                            int.TryParse(parts[6], out int Crumbles);
-                            DateTime.TryParse(parts[7], out DateTime ProdStart);
-                            DateTime.TryParse(parts[8], out DateTime ProdEnd);
-                            string ProdOrderId = parts[9];
-                            int.TryParse(parts[10], out int BoxesProduced);
-                            int.TryParse(parts[11], out int ItemId);
-                            //int.TryParse(parts[12], out int recipe);
-
-                            ProductionReport productionReport = new ProductionReport
-                                (Date, ProdTeam, ProdLine, EmployeeOne, EmployeeTwo,
-                                RecipeId, Crumbles, ProdStart, ProdEnd, ProdOrderId,
-                                BoxesProduced, ItemId);
-                            ReportRepo.Add(productionReport);
                         }
                     }
                 }
             }
-            //else
-            //    MakeFileExist();
-
             return ReportRepo;
         }
 
@@ -128,6 +134,10 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                 for (int i = 0; i < ReportRepo.Count; i++)
                 {
                     sw.WriteLine(ReportRepo[i].ToString());
+                    foreach (ProductionProcess process in ReportRepo[i].ProdTeam.PPRepo)
+                    {
+                        sw.WriteLine(process.ToString());
+                    }
                 }
             }
         }
