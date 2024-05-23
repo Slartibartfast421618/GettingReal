@@ -68,6 +68,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 
         public List<ProductionReport> LoadProductionReports()
         {
+            int i = -1;
             List<ProductionReport> ReportRepo = new List<ProductionReport>();
             if (File.Exists(Path.Combine(DocPath, DataFileName)))
             {
@@ -100,6 +101,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                                     RecipeId, Crumbles, Spillage, ProdStart, ProdEnd, ProdOrderId,
                                     BoxesProduced, ItemId);
                                 ReportRepo.Add(productionReport);
+                                i++;
                             }
                             else if (parts.Length == 3)
                             {
@@ -107,7 +109,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                                 DateTime.TryParse(parts[1], out DateTime ProcEnd);
                                 string ProcReason = parts[2];
                                 ProductionProcess addProcess = new ProductionProcess(ProcStart, ProcEnd, ProcReason);
-                                ReportRepo[0].NewProcess(addProcess);
+                                ReportRepo[i].NewProcess(addProcess);
                             }
                             else
                                 //throw new InvalidDataException("Dataformat in file not correct");
