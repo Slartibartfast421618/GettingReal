@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GettingReal_Jacobsens_Bakery.ViewModel
+namespace GettingReal_Jacobsens_Bakery.Model
 {
-    internal class Datahandler
+
+    public enum EnumLine
     {
+        one,
+        two,
+        three,
+        four
     }
+
 }

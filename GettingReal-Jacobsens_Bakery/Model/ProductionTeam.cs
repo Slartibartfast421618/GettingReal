@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GettingReal_Jacobsens_Bakery.Model
+﻿namespace GettingReal_Jacobsens_Bakery.Model
 {
-    
+
     public class ProductionTeam
     {
 
         private DateTime _date;
-        private Line _prodLine;
-        private Team _prodTeam;
+        private EnumLine _prodLine;
+        private EnumTeam _prodTeam;
         private TimeSpan _downtimeDuration;
         public List<ProductionProcess> PPRepo = new List<ProductionProcess>();
         public Employee EmployeeOne = new Employee();
@@ -27,13 +21,13 @@ namespace GettingReal_Jacobsens_Bakery.Model
             set { _date = value; }
         }
 
-        public Line ProdLine
+        public EnumLine ProdLine
         {
             get { return _prodLine; }
             set { _prodLine = value; }
         }
 
-        public Team ProdTeam
+        public EnumTeam ProdTeam
         {
             get { return _prodTeam; }
             set { _prodTeam = value; }

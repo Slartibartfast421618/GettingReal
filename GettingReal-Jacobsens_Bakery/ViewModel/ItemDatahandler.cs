@@ -1,4 +1,5 @@
 ﻿using GettingReal_Jacobsens_Bakery.Model;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,10 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
+using System.Xml.Linq;
+
 
 namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
     public class ItemDatahandler
+
     {
         private string FileName = "ItemRepo.txt";
         private string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);

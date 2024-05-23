@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GettingReal_Jacobsens_Bakery.Model
+﻿namespace GettingReal_Jacobsens_Bakery.Model
 {
     public class Production
     {
@@ -37,6 +31,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
             get { return _boxesProduced; }
             set { _boxesProduced = value; }
         }
+
 
     }
 }

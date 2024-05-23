@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Automation;
@@ -11,6 +13,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
     public class ItemRepo
     {
+
         public ObservableCollection<Item> Items = new ObservableCollection<Item>();
         public ItemDatahandler datahandler = new ItemDatahandler();
         public Item FindItem(int id)
@@ -66,6 +69,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public void LoadRepo(string fileName)
         {
             Items = datahandler.LoadItems(fileName);
+
         }
     }
 }

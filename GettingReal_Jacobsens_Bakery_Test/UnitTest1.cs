@@ -1,10 +1,10 @@
-using GettingReal_Jacobsens_Bakery;
-using GettingReal_Jacobsens_Bakery.ViewModel;
 using GettingReal_Jacobsens_Bakery.Model;
 using System.Security.Cryptography.Pkcs;
 using GettingReal_Jacobsens_Bakery_Test;
 using System.Windows.Media.Media3D;
 using System.Xml.Linq;
+using GettingReal_Jacobsens_Bakery.ViewModel;
+
 
 namespace GettingReal_Jacobsens_Bakery_Test
 {
@@ -38,8 +38,8 @@ namespace GettingReal_Jacobsens_Bakery_Test
             Report = new ProductionReport()
             {
                 Date = DateTime.Today,
-                Line = Line.one,
-                Team = Team.red,
+                Line = EnumLine.one,
+                Team = EnumTeam.red,
                 SigOne = "Lars Hansen",
                 SigTwo = "Mette Boldt",
                 Crumbles = 80,
@@ -66,10 +66,12 @@ namespace GettingReal_Jacobsens_Bakery_Test
         [TestMethod]
         public void TestOfProdTeam()
         {
+
             Assert.AreEqual(DateTime.Today, repo.SelectedReport.Date);
-            Assert.AreEqual(Line.one, repo.SelectedReport.Line);
-            Assert.AreEqual(Team.red, repo.SelectedReport.Team);
+            Assert.AreEqual(EnumLine.one, repo.SelectedReport.Line);
+            Assert.AreEqual(EnumTeam.red, repo.SelectedReport.Team);
             Assert.AreEqual("Lars Hansen", repo.SelectedReport.SigOne);
+
         }
         [TestMethod]
         public void TestNewProcess()
