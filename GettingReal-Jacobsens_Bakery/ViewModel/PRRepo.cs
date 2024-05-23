@@ -19,6 +19,9 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             ReportRepo = PRDatahandler.LoadProductionReports();
         }
 
-        
+        public void SaveReports()
+        {
+            PRDatahandler.SaveProductionReports(ReportRepo);
+        }
     }
 }

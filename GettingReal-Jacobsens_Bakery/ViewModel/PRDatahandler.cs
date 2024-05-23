@@ -104,7 +104,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                 return ReportRepo;
         }
 
-        public void SaveItem(List<ProductionReport> ReportRepo)
+        public void SaveProductionReport(List<ProductionReport> ReportRepo)
         {
             using (StreamWriter sw = new StreamWriter(Path.Combine(DocPath, DataFileName)))
             {
@@ -113,7 +113,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 
         }
 
-        public void SaveItems(List<ProductionReport> ReportRepo)
+        public void SaveProductionReports(List<ProductionReport> ReportRepo)
         {
 
                 using (StreamWriter sw = new StreamWriter(Path.Combine(DocPath, DataFileName)))
