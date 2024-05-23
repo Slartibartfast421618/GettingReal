@@ -1,4 +1,4 @@
-﻿<Window x:Class="GettingReal_Jacobsens_Bakery.View.NewReportWindow"
+﻿<Window x:Class="GettingReal_Jacobsens_Bakery.View.ReportWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GettingReal_Jacobsens_Bakery.View"
         xmlns:viewmodel="clr-namespace:GettingReal_Jacobsens_Bakery.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ProductionReport}"
         mc:Ignorable="d"
-        Title="NewReportWindow" SizeToContent="WidthAndHeight">
+        Title="ReportWindow" SizeToContent="WidthAndHeight">
     <Grid Height="434" Width="600">
         <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FFDDDDED">
             <Label FontSize="24" Content="Rapport information" Margin="10,10,0,0" 
@@ -17,11 +17,15 @@
         </Grid>
 
         <Grid Height="314" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ComboBox x:Name="cbTeam" Height="40" Width="160" Margin="20,20,0,0" 
+            <ComboBox x:Name="cbTeam" 
+                      Text="{Binding Team, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                      Height="40" Width="160" Margin="20,20,0,0" 
                       HorizontalAlignment="Left" VerticalAlignment="Top" 
                       FontSize="24" FontFamily="Bahnschrift Light" 
                       SelectionChanged="cbTeam_SelectionChanged"/>
-            <ComboBox x:Name="cbLine" Height="40" Width="160" Margin="0,20,0,0" 
+            <ComboBox x:Name="cbLine" 
+                      Text="{Binding Line, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                      Height="40" Width="160" Margin="0,20,0,0" 
                       HorizontalAlignment="Center" VerticalAlignment="Top" 
                       FontSize="24" FontFamily="Bahnschrift Light" 
                       SelectionChanged="cbLine_SelectionChanged"/>
@@ -32,7 +36,7 @@
             <TextBox x:Name="tbWareNum" Text="{Binding ItemId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
-                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
+                     FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" TextChanged="tbWareNum_TextChanged"/>
             <Label x:Name="lblRecipeNum" Content="{Binding RecipeId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
                    Height="40" Width="160" Margin="0,80,0,0" 
                    HorizontalAlignment="Center" VerticalAlignment="Top" 
@@ -107,6 +111,24 @@
             <Label Content="Slut tid (tt:mm)" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,185,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+            <Label Content="Signatur" 
+                Height="20" Width="160"
+                HorizontalAlignment="Left" Margin="20,245,0,0" VerticalAlignment="Top" 
+                FontFamily="Arial" FontSize="10"/>
+            <TextBox x:Name="tbSigOne" Text="{Binding SigOne, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+                Height="40" Width="160" Margin="20,260,0,0" TextWrapping="Wrap" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                GotFocus="TextBox_GotFocus"/>
+            <Label Content="Signatur" 
+                Height="20" Width="160"
+                HorizontalAlignment="Center" Margin="0,245,0,0" VerticalAlignment="Top" 
+                FontFamily="Arial" FontSize="10"/>
+            <TextBox x:Name="tbSigTwo" Text="{Binding SigTwo, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+                Height="40" Width="160" Margin="0,260,0,0" TextWrapping="Wrap" 
+                HorizontalAlignment="Center" VerticalAlignment="Top" 
+                FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
+                GotFocus="TextBox_GotFocus"/>
         </Grid>
 
         <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#FFDDDDED">
@@ -119,6 +141,7 @@
                     Click="btnBack_Click" FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
             <CheckBox x:Name="chkWeightCheck" Content="Vægtkontrol" IsChecked="False" 
+                      IsEnabled="False" Visibility="Collapsed" 
                       HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Center" 
                       Height="16" Width="100" RenderTransformOrigin="0.5,0.5" Checked="chkWeightCheck_Checked">
                 <CheckBox.RenderTransform>

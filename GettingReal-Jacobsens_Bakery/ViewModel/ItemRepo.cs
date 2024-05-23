@@ -24,9 +24,11 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                 if (item.ItemId == id)
                 {
                     SelectedItem = item;
-                    break;
+                    return SelectedItem;
                 }
             }
+            SelectedItem = new Item();
+            SelectedItem.SetItem(0, 0);
             return SelectedItem;
         }
         public ObservableCollection<Item> GetItems()

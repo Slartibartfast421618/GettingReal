@@ -20,12 +20,14 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 
     {
         private string FileName = "ItemRepo.txt";
-        private string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        
+        //private string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        private string DocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
 
         public void SaveItems(ObservableCollection<Item> repo, string fileName)
         {
-            using (StreamWriter sw = new StreamWriter(Path.Combine(path,fileName), false))
+            // (StreamWriter sw = new StreamWriter(Path.Combine(path, fileName), false))
+            using (StreamWriter sw = new StreamWriter(Path.Combine(DocPath, fileName), false))
             {
                 try
                 {
@@ -42,7 +44,8 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
         public void SaveItems(ObservableCollection<Item> repo)
         {
-            using (StreamWriter sw = new StreamWriter(Path.Combine(path, FileName), false))
+            //using (StreamWriter sw = new StreamWriter(Path.Combine(path, FileName), false))
+            using (StreamWriter sw = new StreamWriter(Path.Combine(DocPath, FileName), false))
             {
                 try
                 {
@@ -59,10 +62,11 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
         public ObservableCollection<Item> LoadItems(string fileName)
         {
-            if (File.Exists(fileName))
+            if (File.Exists(Path.Combine(DocPath, fileName)))
             {
                 ObservableCollection<Item> items = new ObservableCollection<Item>();
-                using (StreamReader sr = new StreamReader(Path.Combine(path, fileName)))
+                //using (StreamReader sr = new StreamReader(Path.Combine(path, fileName)))
+                using (StreamReader sr = new StreamReader(Path.Combine(DocPath, fileName)))
                 {
                     while (sr.EndOfStream == false)
                     {
@@ -89,10 +93,12 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
         public ObservableCollection<Item> LoadItems()
         {
-            if (File.Exists(FileName))
+            //if (File.Exists(Path.Combine(path, FileName)))
+            if (File.Exists(Path.Combine(DocPath, FileName)))
             {
                 ObservableCollection<Item> items = new ObservableCollection<Item>();
-                using (StreamReader sr = new StreamReader(Path.Combine(path, FileName)))
+                //using (StreamReader sr = new StreamReader(Path.Combine(path, FileName)))
+                using (StreamReader sr = new StreamReader(Path.Combine(DocPath, FileName)))
                 {
                     while (sr.EndOfStream == false)
                     {
@@ -115,7 +121,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                 return items;
             }
             else
-                return null ;
+                return null;
         }
     }
 }

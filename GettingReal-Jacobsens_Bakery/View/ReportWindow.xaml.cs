@@ -12,20 +12,22 @@ using GettingReal_Jacobsens_Bakery.ViewModel;
 namespace GettingReal_Jacobsens_Bakery.View
 {
     /// <summary>
-    /// Interaction logic for NewReportWindow.xaml
+    /// Interaction logic for ReportWindow.xaml
     /// </summary>
-    public partial class NewReportWindow : Window
+    public partial class ReportWindow : Window
     {
         ProductionReport activeProductionReport;
+        PRRepo prr;
 
         ProcessesWindow processesWindow;
 
-        public NewReportWindow(ProductionReport selectedProductionReport)
+        public ReportWindow(ProductionReport selectedProductionReport, PRRepo pRRepo)
         {
             InitializeComponent();
             InitializeTeamsAndLines();
 
             this.activeProductionReport = selectedProductionReport;
+            this.prr = pRRepo;
             DataContext = this.activeProductionReport;
         }
 
@@ -87,5 +89,9 @@ namespace GettingReal_Jacobsens_Bakery.View
                 cbLine.Items.Add(line);
         }
 
+        private void tbWareNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            prr.MatchItem(activeProductionReport);
+        }
     }
 }

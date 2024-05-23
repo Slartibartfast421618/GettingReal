@@ -11,7 +11,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
     public class PRDatahandler
     {
-        string DocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        private string DocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         private string _dataFileName;
         public string DataFileName
@@ -26,43 +26,43 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 
 
 
-        public ProductionReport LoadProductionReport()
-        {
+        //public ProductionReport LoadProductionReport()
+        //{
 
-            using (StreamReader sr = new StreamReader(Path.Combine(DocPath, DataFileName)))
-            {
+        //    using (StreamReader sr = new StreamReader(Path.Combine(DocPath, DataFileName)))
+        //    {
 
-                string line = sr.ReadLine();
+        //        string line = sr.ReadLine();
 
-                string[] parts = line.Split(';');
+        //        string[] parts = line.Split(';');
 
-                if (parts.Length != 12)
-                {
-                    throw new InvalidDataException("Dataformat in file not correct");
-                }
+        //        if (parts.Length != 12)
+        //        {
+        //            throw new InvalidDataException("Dataformat in file not correct");
+        //        }
 
-                DateTime.TryParse(parts[0], out DateTime Date);
-                EnumTeam.TryParse(parts[1], out EnumTeam ProdTeam);
-                EnumLine.TryParse(parts[2], out EnumLine ProdLine);
-                string EmployeeOne = parts[3];
-                string EmployeeTwo = parts[4];
-                int.TryParse(parts[5], out int RecipeId);
-                int.TryParse(parts[6], out int Crumbles);
-                DateTime.TryParse(parts[7], out DateTime ProdStart);
-                DateTime.TryParse(parts[8], out DateTime ProdEnd);
-                string ProdOrderId = parts[9];
-                int.TryParse(parts[10], out int BoxesProduced);
-                int.TryParse(parts[11], out int ItemId);
-                //int.TryParse(parts[12], out int recipe);
+        //        DateTime.TryParse(parts[0], out DateTime Date);
+        //        EnumTeam.TryParse(parts[1], out EnumTeam ProdTeam);
+        //        EnumLine.TryParse(parts[2], out EnumLine ProdLine);
+        //        string EmployeeOne = parts[3];
+        //        string EmployeeTwo = parts[4];
+        //        int.TryParse(parts[5], out int RecipeId);
+        //        int.TryParse(parts[6], out int Crumbles);
+        //        DateTime.TryParse(parts[7], out DateTime ProdStart);
+        //        DateTime.TryParse(parts[8], out DateTime ProdEnd);
+        //        string ProdOrderId = parts[9];
+        //        int.TryParse(parts[10], out int BoxesProduced);
+        //        int.TryParse(parts[11], out int ItemId);
+        //        //int.TryParse(parts[12], out int recipe);
 
-                ProductionReport productionReport = new ProductionReport
-                    (Date, ProdTeam, ProdLine, EmployeeOne, EmployeeTwo, 
-                    RecipeId, Crumbles, ProdStart, ProdEnd, ProdOrderId, 
-                    BoxesProduced, ItemId);
-                return productionReport;
-            }
+        //        ProductionReport productionReport = new ProductionReport
+        //            (Date, ProdTeam, ProdLine, EmployeeOne, EmployeeTwo, 
+        //            RecipeId, Crumbles, ProdStart, ProdEnd, ProdOrderId, 
+        //            BoxesProduced, ItemId);
+        //        return productionReport;
+        //    }
 
-        }
+        //}
 
         
 
@@ -79,7 +79,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                         {
                             string[] parts = line.Trim().Split(';');
 
-                            if (parts.Length == 12)
+                            if (parts.Length == 13)
                             {
                                 DateTime.TryParse(parts[0], out DateTime Date);
                                 EnumTeam.TryParse(parts[1], out EnumTeam ProdTeam);
@@ -88,15 +88,16 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                                 string EmployeeTwo = parts[4];
                                 int.TryParse(parts[5], out int RecipeId);
                                 int.TryParse(parts[6], out int Crumbles);
-                                DateTime.TryParse(parts[7], out DateTime ProdStart);
-                                DateTime.TryParse(parts[8], out DateTime ProdEnd);
-                                string ProdOrderId = parts[9];
-                                int.TryParse(parts[10], out int BoxesProduced);
-                                int.TryParse(parts[11], out int ItemId);
+                                int.TryParse(parts[7], out int Spillage);
+                                DateTime.TryParse(parts[8], out DateTime ProdStart);
+                                DateTime.TryParse(parts[9], out DateTime ProdEnd);
+                                string ProdOrderId = parts[10];
+                                int.TryParse(parts[11], out int BoxesProduced);
+                                int.TryParse(parts[12], out int ItemId);
 
                                 ProductionReport productionReport = new ProductionReport
                                     (Date, ProdTeam, ProdLine, EmployeeOne, EmployeeTwo,
-                                    RecipeId, Crumbles, ProdStart, ProdEnd, ProdOrderId,
+                                    RecipeId, Crumbles, Spillage, ProdStart, ProdEnd, ProdOrderId,
                                     BoxesProduced, ItemId);
                                 ReportRepo.Add(productionReport);
                             }
@@ -109,7 +110,8 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                                 ReportRepo[0].NewProcess(addProcess);
                             }
                             else
-                                throw new InvalidDataException("Dataformat in file not correct");
+                                //throw new InvalidDataException("Dataformat in file not correct");
+                                return ReportRepo;
 
                         }
                     }
@@ -118,13 +120,13 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             return ReportRepo;
         }
 
-        public void SaveProductionReport(List<ProductionReport> ReportRepo)
-        {
-            using (StreamWriter sw = new StreamWriter(Path.Combine(DocPath, DataFileName)))
-            {
-                sw.WriteLine(ReportRepo.ToString());
-            }
-        }
+        //public void SaveProductionReport(List<ProductionReport> ReportRepo)
+        //{
+        //    using (StreamWriter sw = new StreamWriter(Path.Combine(DocPath, DataFileName)))
+        //    {
+        //        sw.WriteLine(ReportRepo.ToString());
+        //    }
+        //}
 
         public void SaveProductionReports(List<ProductionReport> ReportRepo)
         {

@@ -45,10 +45,6 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                 ProdTeam.Date = value;
             }
         }
-
-
-
-
         public string DateFormatted
         {
             get { return ProdTeam.DateFormatted; }
@@ -97,10 +93,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
         public TimeSpan DowntimeDuration 
         { 
-            get
-            {
-                return ProdTeam.DowntimeDuration;
-            }
+            get { return ProdTeam.DowntimeDuration; }
         }
         public void DeleteProcess(int id)
         {
@@ -119,30 +112,49 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         public string SigOne
         {
             get { return ProdTeam.EmployeeOne.Signature; }
-            set { ProdTeam.EmployeeOne.Signature = value; }
+            set 
+            { 
+                ProdTeam.EmployeeOne.Signature = value;
+                OnPropertyChanged(nameof(SigOne));
+            }
         }
         public string SigTwo
         {
             get { return ProdTeam.EmployeeTwo.Signature; }
-            set { ProdTeam.EmployeeTwo.Signature = value; }
+            set 
+            { 
+                ProdTeam.EmployeeTwo.Signature = value;
+                OnPropertyChanged(nameof(SigTwo));
+            }
         }
 
         // Get and set methods for the properties in the ActiveRecipe class.
         public int RecipeId
         {
             get { return ProdTeam.Recipe.RecipeId; }
-            set {  ProdTeam.Recipe.RecipeId = value;  }
+            set 
+            {  
+                ProdTeam.Recipe.RecipeId = value;
+                OnPropertyChanged(nameof(RecipeId));
+            }
         }
         public int Crumbles
         {
             get { return ProdTeam.Recipe.Crumbles; }
-            set { ProdTeam.Recipe.Crumbles = value; }
+            set 
+            { 
+                ProdTeam.Recipe.Crumbles = value;
+                OnPropertyChanged(nameof(Crumbles));
+            }
         }
-        private int _spillage;
         public int Spillage
         {
             get { return ProdTeam.Recipe.Spillage; }
-            set { ProdTeam.Recipe.Spillage = value; }
+            set 
+            { 
+                ProdTeam.Recipe.Spillage = value;
+                OnPropertyChanged(nameof(Spillage));
+            }
         }
 
         // Get and set methods for the actual production, in the Production class.
@@ -192,17 +204,23 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                 OnPropertyChanged(nameof(BoxesProduced));
             }
         }
-
-        // Get and set methods for the produced item, located in the Item class.
+        private int _itemId;
         public int ItemId
         {
-            get { return ProdTeam.Recipe.Production.ProdItem.ItemId; }
-            set 
-            { 
-                ProdTeam.Recipe.Production.ProdItem.ItemId = value;
-                OnPropertyChanged(nameof(ItemId));
-            }
+            get { return _itemId; }
+            set { _itemId = value; }
         }
+        //public int ItemId
+        //{
+        //    get { return ProdTeam.Recipe.Production.ProdItem.ItemId; }
+        //    set 
+        //    { 
+        //        ProdTeam.Recipe.Production.ProdItem.ItemId = value;
+        //        OnPropertyChanged(nameof(ItemId));
+        //    }
+        //}
+
+        // Get and set methods for the produced item, located in the Item class.
         public int Recipe
         {
             get { return ProdTeam.Recipe.Production.ProdItem.RecipeId; }
@@ -218,14 +236,16 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             if (findItem != null)
                 ProdTeam.Recipe.Production.ProdItem = findItem;
             RecipeId = Recipe;
+            OnPropertyChanged(nameof(RecipeId));
         }
         public void SetItem(Item item)
         {
             ProdTeam.Recipe.Production.ProdItem = item;
             RecipeId = item.RecipeId;
+            OnPropertyChanged(nameof(RecipeId));
         }
 
-        public ProductionReport(DateTime date, EnumTeam prodTeam, EnumLine line, string employeeOne, string employeeTwo, int recipeId, int crumbles, DateTime prodStart, DateTime prodEnd, string prodOrderId, int boxesProduced, int itemId)
+        public ProductionReport(DateTime date, EnumTeam prodTeam, EnumLine line, string employeeOne, string employeeTwo, int recipeId, int crumbles, int spillage, DateTime prodStart, DateTime prodEnd, string prodOrderId, int boxesProduced, int itemId)
         {
             Date = date;
             Team = prodTeam;
@@ -234,6 +254,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             SigTwo = employeeTwo;
             RecipeId = recipeId;
             Crumbles = crumbles;
+            Spillage = spillage;
             ProdStart = prodStart;
             ProdEnd = prodEnd;
             ProdOrderId = prodOrderId;
@@ -244,7 +265,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 
         public string ToString()
         {
-            return ($"{Date};{Team};{Line};{SigOne};{SigTwo};{RecipeId};{Crumbles};{ProdStart};{ProdEnd};{ProdOrderId};{BoxesProduced};{ItemId}");
+            return $"{Date};{Team};{Line};{SigOne};{SigTwo};{RecipeId};{Crumbles};{Spillage};{ProdStart};{ProdEnd};{ProdOrderId};{BoxesProduced};{ItemId}";
         }
 
 

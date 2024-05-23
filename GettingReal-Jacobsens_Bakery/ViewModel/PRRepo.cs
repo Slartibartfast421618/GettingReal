@@ -12,8 +12,9 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
     public class PRRepo : INotifyPropertyChanged
     {
-        public Efficiency calculator = new Efficiency();        
-        public PRDatahandler PRDatahandler = new PRDatahandler();
+        private Efficiency calculator = new Efficiency();        
+        private PRDatahandler PRDatahandler = new PRDatahandler();
+        private ItemRepo itemRepo = new ItemRepo();
         public ObservableCollection<ProductionReport> ReportRepo { get; set; } = new ObservableCollection<ProductionReport>();
 
         private ProductionReport _selectedReport;
@@ -28,7 +29,9 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
         public PRRepo()
         {
+            itemRepo.LoadRepo();
             LoadReports();
+            MatchItems();
         }
 
         public void LoadReports()
@@ -38,6 +41,30 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             foreach (ProductionReport report in loadReports)
             {
                 ReportRepo.Add(report);
+            }
+        }
+
+        public void MatchItem(ProductionReport activeReport)
+        {
+            try
+            {
+                activeReport.RecipeId = itemRepo.FindItem(activeReport.ItemId).RecipeId;
+            }
+            catch (NullReferenceException ex)
+            {
+                
+            }
+        }
+        public void MatchItems()
+        {
+            foreach (ProductionReport report in ReportRepo)
+            {
+                if (report.ItemId != 0)
+                {
+                    report.RecipeId = itemRepo.FindItem(report.ItemId).RecipeId;
+
+
+                }
             }
         }
 

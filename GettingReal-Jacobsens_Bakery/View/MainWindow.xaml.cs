@@ -17,7 +17,7 @@ namespace GettingReal_Jacobsens_Bakery.View
     public partial class MainWindow : Window
     {
         PRRepo prr;
-        NewReportWindow newReportWindow;
+        ReportWindow reportWindow;
 
         public MainWindow()
         {
@@ -29,16 +29,13 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {   // Reports of this team, this shift -- Currently 5 lines: Start, End, P.Order, WareNum, TotalBoxes
-            newReportWindow = new NewReportWindow(prr.SelectedReport);
-            newReportWindow.Show();
+            reportWindow = new ReportWindow(prr.SelectedReport, prr);
+            reportWindow.Show();
         }
 
         private void btnNewReport_Click(object sender, RoutedEventArgs e)
-        {   // Change window to NewReport
+        {   // Create a new line. Because this causes the list to readjust selection, this automatically opens it
             prr.NewLine();
-            newReportWindow = new NewReportWindow(prr.SelectedReport);
-            newReportWindow.Show();
-
         }
 
         private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)
