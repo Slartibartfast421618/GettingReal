@@ -72,6 +72,16 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         }
 
+        private void btnSetStart_Click(object sender, RoutedEventArgs e)
+        {
+            pr.SelectedProcess.ProcStartFormatted = TimeNow();
+        }
+
+        private void btnSetEnd_Click(object sender, RoutedEventArgs e)
+        {
+            pr.SelectedProcess.ProcStartFormatted = TimeNow();
+        }
+
         private void btnSaveAndBack_Click(object sender, RoutedEventArgs e)
         {   // Make sure everything is validated and saved to file before closing window
 
@@ -89,5 +99,11 @@ namespace GettingReal_Jacobsens_Bakery.View
             cbReason.Items.Add("Renset tyller");
         }
 
+        private string TimeNow()
+        {
+            string hour = DateTime.Now.ToString("HH");
+            string minute = DateTime.Now.ToString("mm");
+            return $"{hour}:{minute}";
+        }
     }
 }

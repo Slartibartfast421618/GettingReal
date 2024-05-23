@@ -86,28 +86,37 @@
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,125,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
             <TextBox x:Name="tbDate" Text="{Binding DateFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
-                     Height="40" Width="160" Margin="20,200,0,0" TextWrapping="Wrap" 
+                     Height="40" Width="120" Margin="20,200,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      GotFocus="TextBox_GotFocus"/>
+            <Button x:Name="btnSetDate" Content="NU" FontWeight="Bold" 
+                    HorizontalAlignment="Left" Margin="140,200,0,0" VerticalAlignment="Top" 
+                    Height="40" Width="40" Click="btnSetDate_Click"/>
             <Label Content="Dato (dd/mm/åå)" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
             <TextBox x:Name="tbTimeStart" Text="{Binding ProdStartFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
-                     Height="40" Width="160" Margin="0,200,0,0" TextWrapping="Wrap" 
+                     Height="40" Width="120" Margin="0,200,40,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Center" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      GotFocus="TextBox_GotFocus"/>
+            <Button x:Name="btnSetStart" Content="NU" FontWeight="Bold" 
+                    HorizontalAlignment="Left" Margin="340,200,0,0" VerticalAlignment="Top" 
+                    Height="40" Width="40" Click="btnSetStart_Click"/>
             <Label Content="Start tid (tt:mm)" 
                    Height="20" Width="160"
                    HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" 
                    FontFamily="Arial" FontSize="10"/>
             <TextBox x:Name="tbTimeEnd" Text="{Binding ProdEndFormatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
-                     Height="40" Width="160" Margin="0,200,20,0" TextWrapping="Wrap" 
+                     Height="40" Width="120" Margin="0,200,60,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" 
                      GotFocus="TextBox_GotFocus"/>
+            <Button x:Name="btnSetEnd" Content="NU" FontWeight="Bold" 
+                    HorizontalAlignment="Left" Margin="540,200,0,0" VerticalAlignment="Top" 
+                    Height="40" Width="40" Click="btnSetEnd_Click"/>
             <Label Content="Slut tid (tt:mm)" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,185,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>

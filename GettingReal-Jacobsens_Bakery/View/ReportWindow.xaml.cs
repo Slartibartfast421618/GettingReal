@@ -93,5 +93,27 @@ namespace GettingReal_Jacobsens_Bakery.View
         {
             prr.MatchItem(activeProductionReport);
         }
+
+        private void btnSetDate_Click(object sender, RoutedEventArgs e)
+        {
+            activeProductionReport.DateFormatted = DateTime.Now.ToString("dd/MM/yy");
+        }
+
+        private void btnSetStart_Click(object sender, RoutedEventArgs e)
+        {
+            activeProductionReport.ProdStartFormatted = TimeNow();
+        }
+
+        private void btnSetEnd_Click(object sender, RoutedEventArgs e)
+        {
+            activeProductionReport.ProdEndFormatted = TimeNow();
+        }
+
+        private string TimeNow()
+        {
+            string hour = DateTime.Now.ToString("HH");
+            string minute = DateTime.Now.ToString("mm");
+            return $"{hour}:{minute}";
+        }
     }
 }

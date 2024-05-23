@@ -82,31 +82,37 @@
                     Click="btnNavigateDown_Click" 
                     FontSize="20" FontFamily="Bahnschrift Light" 
                     BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+            <Label Content="Start" 
+                   Height="25" Width="55" Margin="10,260,10,34" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                   FontSize="12" FontFamily="Segoe UI" FontStyle="Italic" Foreground="#FF545461"/>
             <TextBox x:Name="tbProcessStart" TextWrapping="Wrap" TextAlignment="Center" 
                      Text="{Binding SelectedProcess.ProcStartFormatted, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
                      Width="65" Height="30" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                      FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbProcessStart_TextChanged" />
+            <Button x:Name="btnSetStart" Content="NU" FontWeight="Bold" 
+                    HorizontalAlignment="Left" Margin="75,274,0,0" VerticalAlignment="Top"
+                    Height="30" Width="30" Click="btnSetStart_Click"/>
+            <Label Content="Slut" 
+                   Height="25" Width="55" Margin="110,0,0,34" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                   FontSize="12" FontFamily="Segoe UI" FontStyle="Italic" Foreground="#FF545461"/>
             <TextBox x:Name="tbProcessEnd" TextWrapping="Wrap" TextAlignment="Center" 
                      Text="{Binding SelectedProcess.ProcEndFormatted, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                     Width="65" Height="30" Margin="80,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                     Width="65" Height="30" Margin="110,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                      FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbProcessEnd_TextChanged" />
-            <ComboBox x:Name="cbReason" 
-                      Text="{Binding ElementName=tbReason, Path=Text, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
-                      Width="440" Height="30" Margin="150,274,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                      FontSize="16" FontFamily="Bahnschrift Light" SelectionChanged="cbReason_SelectionChanged"/>
+            <Button x:Name="btnSetEnd" Content="NU" FontWeight="Bold" 
+                    HorizontalAlignment="Left" Margin="175,274,0,0" VerticalAlignment="Top"
+                    Height="30" Width="30" Click="btnSetEnd_Click"/>
+            <Label Content="Bemærkning" 
+                   Height="25" Width="90" Margin="210,0,0,34" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                   FontSize="12" FontFamily="Segoe UI" FontStyle="Italic" Foreground="#FF545461"/>
             <TextBox x:Name="tbReason" TextWrapping="Wrap" TextAlignment="Left" 
                      Text="{Binding SelectedProcess.Reason, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                     Width="420" Height="30" Margin="150,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                     Width="360" Height="30" Margin="210,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                      FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbReason_TextChanged"/>
-            <Label Content="Start" 
-                   Height="25" Width="55" Margin="10,260,10,35" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                   FontSize="12" FontFamily="Segoe UI" FontStyle="Italic" Foreground="#FF545461"/>
-            <Label Content="Slut" 
-                   Height="25" Width="55" Margin="80,0,0,34" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                   FontSize="12" FontFamily="Segoe UI" FontStyle="Italic" Foreground="#FF545461"/>
-            <Label Content="Bemærkning" 
-                   Margin="150,0,0,34" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                   FontSize="12" FontFamily="Segoe UI" FontStyle="Italic" Foreground="#FF545461"/>
+            <ComboBox x:Name="cbReason" 
+                      Text="{Binding ElementName=tbReason, Path=Text, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
+                      Width="380" Height="30" Margin="210,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                      FontSize="16" FontFamily="Bahnschrift Light" SelectionChanged="cbReason_SelectionChanged"/>
         </Grid>
 
         <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
