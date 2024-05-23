@@ -8,8 +8,8 @@ namespace GettingReal_Jacobsens_Bakery.Model
 {
     public enum EnumTeam
     {
-        red,
-        white,
-        blue
+        Rød,
+        Hvid,
+        Blå
     }
 }

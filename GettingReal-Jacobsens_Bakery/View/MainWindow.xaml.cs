@@ -17,8 +17,6 @@ namespace GettingReal_Jacobsens_Bakery.View
     public partial class MainWindow : Window
     {
         PRRepo prr;
-
-
         NewReportWindow newReportWindow;
 
         public MainWindow()
@@ -31,7 +29,8 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void livCurrentReports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {   // Reports of this team, this shift -- Currently 5 lines: Start, End, P.Order, WareNum, TotalBoxes
-
+            newReportWindow = new NewReportWindow(prr.SelectedReport);
+            newReportWindow.Show();
         }
 
         private void btnNewReport_Click(object sender, RoutedEventArgs e)
@@ -44,34 +43,9 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void btnSaveAndExit_Click(object sender, RoutedEventArgs e)
         {   // Make sure everything is saved to file before closing window
-
+            prr.SaveReports();
 
             Close();
-        }
-
-        private void btnCheckCurrentReport_Click(object sender, RoutedEventArgs e)
-        {
-            //if (prr.SelectedReport != null)
-            //    btnCheckCurrentReportDate.Content = prr.SelectedReport.DateFormatted;
-            if (livCurrentReports.SelectedIndex > -1)
-            {
-                newReportWindow = new NewReportWindow(prr.SelectedReport);
-                newReportWindow.Show();
-            }
-
-        }
-
-        private void btnCheckCurrentReportDowntime_Click(object sender, RoutedEventArgs e)
-        {
-            if (livCurrentReports.SelectedIndex > -1)
-            {
-                btnCheckCurrentReportDowntime.Content = prr.SelectedReport.DowntimeDuration;
-            }
-        }
-
-        private void btnCheckReportOneDowntime_Click(object sender, RoutedEventArgs e)
-        {
-            btnCheckReportOneDowntime.Content = prr.ReportRepo[0].DowntimeDuration;
         }
     }
 }

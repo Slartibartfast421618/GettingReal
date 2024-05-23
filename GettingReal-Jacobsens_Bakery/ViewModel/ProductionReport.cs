@@ -14,13 +14,12 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
 {
     public class ProductionReport : INotifyPropertyChanged
     {
-
-        public PRRepo repo = new PRRepo();
-        private ProductionTeam _prodTeam;
+        public ItemRepo itemRepo = new ItemRepo();
+        private ProductionTeam _prodTeam = new ProductionTeam();
 
         public ProductionReport() 
         {
-            ProdTeam = new ProductionTeam();
+            //ProdTeam = new ProductionTeam();
         }
 
         // Get and set methods for the properties in the Production Team class.
@@ -29,17 +28,26 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return _prodTeam; }
             set
             {
-                _prodTeam = value;
-                OnPropertyChanged(nameof(ProdTeam));
+                if (ProdTeam != null)
+                {
+                    _prodTeam = value;
+                    OnPropertyChanged(nameof(ProdTeam));
+                }
             }
         }
         public DateTime Date
         {
             get { return ProdTeam.Date; }
-            set { ProdTeam.Date = value; }
+            set
+            {
+                if (value == null)
+                    DateTime.TryParse("01/01/0001", out value);
+                ProdTeam.Date = value;
+            }
         }
 
-        
+
+
 
         public string DateFormatted
         {
@@ -64,7 +72,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         {
             get { return ProdTeam.ProdTeam; }
             set 
-            { 
+            {
                 ProdTeam.ProdTeam = value;
                 OnPropertyChanged(nameof(Team));
             }
@@ -205,7 +213,10 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
         public void SetItem(int itemId)
         {
-            ProdTeam.Recipe.Production.ProdItem = repo.GetItem(itemId);
+            Item findItem = itemRepo.FindItem(itemId);
+
+            if (findItem != null)
+                ProdTeam.Recipe.Production.ProdItem = findItem;
             RecipeId = Recipe;
         }
         public void SetItem(Item item)
@@ -214,7 +225,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             RecipeId = item.RecipeId;
         }
 
-        public ProductionReport(DateTime date, EnumTeam prodTeam, EnumLine line, string employeeOne, string employeeTwo, int recipeId, int crumbles, DateTime prodStart, DateTime prodEnd, string prodOrderId, int boxesProduced, int itemId, int recipe)
+        public ProductionReport(DateTime date, EnumTeam prodTeam, EnumLine line, string employeeOne, string employeeTwo, int recipeId, int crumbles, DateTime prodStart, DateTime prodEnd, string prodOrderId, int boxesProduced, int itemId)
         {
             Date = date;
             Team = prodTeam;
@@ -227,16 +238,13 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             ProdEnd = prodEnd;
             ProdOrderId = prodOrderId;
             BoxesProduced = boxesProduced;
-            SetItem(itemId, recipe);
-        }
-
-        public ProductionReport()
-        {
+            ItemId = itemId;
+            SetItem(itemId);
         }
 
         public string ToString()
         {
-            return ($"{Date};{Team};{Line};{SigOne};{SigTwo};{RecipeId};{Crumbles};{ProdStart};{ProdEnd};{ProdOrderId};{BoxesProduced};{ItemId};{Recipe};");
+            return ($"{Date};{Team};{Line};{SigOne};{SigTwo};{RecipeId};{Crumbles};{ProdStart};{ProdEnd};{ProdOrderId};{BoxesProduced};{ItemId}");
         }
 
 

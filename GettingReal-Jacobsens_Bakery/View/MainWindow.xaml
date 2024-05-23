@@ -92,16 +92,6 @@
         <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#FFDDDDED">
             <Button x:Name="btnNewReport" Content="Ny rapport" Height="40" Width="150" Margin="275,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnNewReport_Click" FontSize="20" FontFamily="Bahnschrift Light" BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
             <Button x:Name="btnSaveAndExit" Content="Gem og afslut" Height="40" Width="150" Margin="440,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnSaveAndExit_Click" FontSize="20" FontFamily="Bahnschrift Light" BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
-            <Button x:Name="btnCheckCurrentReport" Content="Button" 
-                    HorizontalAlignment="Left" Margin="27,0,0,0" VerticalAlignment="Center" 
-                    Click="btnCheckCurrentReport_Click"/>
-            <Button x:Name="btnCheckCurrentReportDowntime" Content="Button" 
-                HorizontalAlignment="Left" Margin="104,0,0,0" VerticalAlignment="Center" 
-                    Click="btnCheckCurrentReportDowntime_Click"/>
-            <Button x:Name="btnCheckReportOneDowntime" Content="Button" 
-                HorizontalAlignment="Left" Margin="176,0,0,0" VerticalAlignment="Center" 
-                    Click="btnCheckReportOneDowntime_Click"/>
-
         </Grid>
 
     </Grid>

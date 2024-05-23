@@ -6,7 +6,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using GettingReal_Jacobsens_Bakery.Model;
 using GettingReal_Jacobsens_Bakery.ViewModel;
 
 namespace GettingReal_Jacobsens_Bakery.View
@@ -17,7 +16,6 @@ namespace GettingReal_Jacobsens_Bakery.View
     public partial class ProcessesWindow : Window
     {
         ProductionReport pr;
-        ProductionProcess pp;
 
         public ProcessesWindow(ProductionReport productionReport)
         {
@@ -36,6 +34,7 @@ namespace GettingReal_Jacobsens_Bakery.View
         private void btnAddProcess_Click(object sender, RoutedEventArgs e)
         {   // Add a blank process, and set it as the active selected item
             pr.AddDefaultProcess();
+            // Set selection to new process
         }
 
         private void btnDeleteProcess_Click(object sender, RoutedEventArgs e)

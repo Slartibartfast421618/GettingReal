@@ -22,14 +22,10 @@ namespace GettingReal_Jacobsens_Bakery.Model
         public Employee EmployeeTwo = new Employee();
         public ActiveRecipe Recipe = new ActiveRecipe();
 
-
-
         public ProductionTeam()
         {
             PPRepo.CollectionChanged += PPRepo_CollectionChanged;
         }
-
-
 
         public DateTime Date
         {
@@ -77,6 +73,21 @@ namespace GettingReal_Jacobsens_Bakery.Model
             }
         }
 
+        public List<string> AvailableProdLines()
+        {
+            List<string> aProdLines = new List<string>();
+            foreach (EnumLine line in Enum.GetValues(typeof(EnumLine)))
+                aProdLines.Add(line.ToString());
+            return aProdLines;
+        }
+        public List<string> AvailableProdTeams()
+        {
+            List<string> aProdTeams = new List<string>();
+            foreach (EnumTeam team in Enum.GetValues(typeof(EnumTeam)))
+                aProdTeams.Add(team.ToString());
+            return aProdTeams;
+        }
+
         public EnumLine ProdLine
         {
             get { return _prodLine; }
@@ -104,7 +115,7 @@ namespace GettingReal_Jacobsens_Bakery.Model
         }
         public void AddProductionProcess()
         {
-            ProductionProcess pr = new ProductionProcess("00:00", "00:00", "abc");
+            ProductionProcess pr = new ProductionProcess("00:00", "00:00", "");
             PPRepo.Add(pr);
             OnPropertyChanged(nameof(PPRepo));
         }

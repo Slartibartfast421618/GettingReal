@@ -9,10 +9,10 @@ namespace GettingReal_Jacobsens_Bakery.Model
 
     public enum EnumLine
     {
-        one,
-        two,
-        three,
-        four
+        Et,
+        To,
+        Tre,
+        Fire
     }
 
 }

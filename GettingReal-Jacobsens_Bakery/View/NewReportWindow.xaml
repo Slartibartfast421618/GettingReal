@@ -130,9 +130,6 @@
                     </TransformGroup>
                 </CheckBox.RenderTransform>
             </CheckBox>
-            <Button x:Name="btnCheckProcessCount" Content="" 
-                    Height="20" Width="40"
-                    HorizontalAlignment="Left" Margin="42,22,0,0" VerticalAlignment="Top" Click="btnCheckProcessCount_Click"/>
 
         </Grid>
 

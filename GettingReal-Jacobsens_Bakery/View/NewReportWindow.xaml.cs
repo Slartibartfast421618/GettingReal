@@ -78,22 +78,14 @@ namespace GettingReal_Jacobsens_Bakery.View
 
 
         private void InitializeTeamsAndLines()
-        {   // Initialize from Team and Line enums! Temporary implementation for now,
-            // do foreach in proper implementation
-            cbTeam.Items.Add("Blå");
-            cbTeam.Items.Add("Rød");
-            cbTeam.Items.Add("Hvid");
+        {   // Initialize from Team and Line enums 
+            ProductionReport baseReport = new ProductionReport();
+            foreach (string team in baseReport.ProdTeam.AvailableProdTeams())
+                cbTeam.Items.Add(team);
 
-            cbLine.Items.Add("1");
-            cbLine.Items.Add("2");
-            cbLine.Items.Add("3");
-            cbLine.Items.Add("4");
-            // REMINDER!! This layer is not allowed to look directly at the enums class
+            foreach (string line in baseReport.ProdTeam.AvailableProdLines())
+                cbLine.Items.Add(line);
         }
 
-        private void btnCheckProcessCount_Click(object sender, RoutedEventArgs e)
-        {
-            btnCheckProcessCount.Content = activeProductionReport.ProdTeam.PPRepo.Count();
-        }
     }
 }

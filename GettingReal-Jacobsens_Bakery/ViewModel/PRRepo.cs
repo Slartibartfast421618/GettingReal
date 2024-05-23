@@ -14,9 +14,9 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
     {
         public Efficiency calculator = new Efficiency();        
         public PRDatahandler PRDatahandler = new PRDatahandler();
-        private ProductionReport _selectedReport;
         public ObservableCollection<ProductionReport> ReportRepo { get; set; } = new ObservableCollection<ProductionReport>();
 
+        private ProductionReport _selectedReport;
         public ProductionReport SelectedReport
         {
             get { return _selectedReport; }
@@ -26,16 +26,45 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
                 OnPropertyChanged(nameof(SelectedReport));
             }
         }
+        public PRRepo()
+        {
+            LoadReports();
+        }
 
-
-
-
+        public void LoadReports()
+        {
+            List<ProductionReport> loadReports = PRDatahandler.LoadProductionReports();
+            ReportRepo.Clear();
+            foreach (ProductionReport report in loadReports)
+            {
+                ReportRepo.Add(report);
+            }
+        }
 
         public void NewLine()
         {
             ProductionReport newReport = new ProductionReport();
             ReportRepo.Add(newReport);
             SelectedReport = newReport;
+        }
+
+        //public Item GetItem(int itemId)
+        //{
+        //    Item item = calculator.ItemRepo.FindItem(itemId);
+        //    if (item != null)
+        //        return item;
+        //    else
+        //        return null;
+        //}
+
+        public void SaveReports()
+        {
+            List<ProductionReport> saveReports = new List<ProductionReport>();
+            foreach (ProductionReport report in ReportRepo)
+            {
+                saveReports.Add(report);
+            }
+            PRDatahandler.SaveProductionReports(saveReports);
         }
 
 
@@ -48,25 +77,6 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
-
-        public Item GetItem(int itemId)
-        {
-            Item item = calculator.ItemRepo.FindItem(itemId);
-            if (item != null)
-                return item;
-            else return null;
-
-        }
-        public PRRepo()
-        {            
-            ReportRepo = PRDatahandler.LoadProductionReports();
-        }
-
-        public void SaveReports()
-        {
-            PRDatahandler.SaveProductionReports(ReportRepo);
-
         }
     }
 }
