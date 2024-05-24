@@ -39,7 +39,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         {
             
             // Effiktivitet = (Input/Output) * 100
-            //Kg = UnitWeight * ItemCount
+            // Kg = UnitWeight * ItemCount
 
 
         }

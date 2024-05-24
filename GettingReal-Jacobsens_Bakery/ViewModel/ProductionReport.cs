@@ -230,7 +230,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             get { return ProdTeam.Recipe.Production.ProdItem; }
         }
         public void SetItem(int itemId)
-        {
+        {   // Setting RecipeId from load
             Item findItem = itemRepo.FindItem(itemId);
 
             if (findItem != null)
@@ -239,14 +239,16 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             OnPropertyChanged(nameof(RecipeId));
         }
         public void SetItem(Item item)
-        {
+        {   // Testing purposes, future vision usage
             ProdTeam.Recipe.Production.ProdItem = item;
             RecipeId = item.RecipeId;
             OnPropertyChanged(nameof(RecipeId));
+            ItemId = item.ItemId;
+            OnPropertyChanged(nameof(ItemId));
         }
 
         public ProductionReport(DateTime date, EnumTeam prodTeam, EnumLine line, string employeeOne, string employeeTwo, int recipeId, int crumbles, int spillage, DateTime prodStart, DateTime prodEnd, string prodOrderId, int boxesProduced, int itemId)
-        {
+        {   // Create ProdReport from load
             Date = date;
             Team = prodTeam;
             Line = line;

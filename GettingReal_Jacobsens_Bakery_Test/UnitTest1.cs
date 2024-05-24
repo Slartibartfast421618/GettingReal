@@ -39,8 +39,8 @@ namespace GettingReal_Jacobsens_Bakery_Test
             {
 
                 Date = DateTime.Parse("01/02/2003"),
-                Line = EnumLine.one,
-                Team = EnumTeam.red,
+                Line = EnumLine.Et,
+                Team = EnumTeam.Rød,
 
                 SigOne = "Lars Hansen",
                 SigTwo = "Mette Boldt",
@@ -57,7 +57,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
             
             repo = new PRRepo();
             repo.SelectedReport = Report;
-            repo.calculator.ItemRepo.AddItem(220275, "Carousel", 100, 100, 100, 100, 125, "94X26", 381121);
+            repo.ItemRepo.AddItem(220275, "Carousel", 100, 100, 100, 100, 125, "94X26", 381121);
             repo.SelectedReport.SetItem(repo.GetItem(220275));
             //repo.SelectedReport.SetItem(220275);
             repo.SelectedReport.NewProcess(p1);
@@ -71,8 +71,8 @@ namespace GettingReal_Jacobsens_Bakery_Test
 
 
             Assert.AreEqual(DateTime.Parse("01/02/2003"), repo.SelectedReport.Date);
-            Assert.AreEqual(EnumLine.one, repo.SelectedReport.Line);
-            Assert.AreEqual(EnumTeam.red, repo.SelectedReport.Team);
+            Assert.AreEqual(EnumLine.Et, repo.SelectedReport.Line);
+            Assert.AreEqual(EnumTeam.Rød, repo.SelectedReport.Team);
             Assert.AreEqual("Lars Hansen", repo.SelectedReport.SigOne);
 
 
@@ -80,9 +80,6 @@ namespace GettingReal_Jacobsens_Bakery_Test
         [TestMethod]
         public void TestNewProcess()
         {
-            // Act
-            repo.SelectedReport.ProdTeam.CalculateTotalProcessDowntime();
-
             // Assert
             Assert.AreEqual(TimeSpan.Parse("01:30:00"), repo.SelectedReport.DowntimeDuration);
 
@@ -95,9 +92,6 @@ namespace GettingReal_Jacobsens_Bakery_Test
             };
 
             repo.SelectedReport.NewProcess(p3);
-
-            repo.SelectedReport.ProdTeam.CalculateTotalProcessDowntime();
-
 
             // Assert
             Assert.AreEqual(TimeSpan.Parse("04:30:00"), repo.SelectedReport.DowntimeDuration);
@@ -122,7 +116,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         {
             Assert.AreEqual(220275, repo.SelectedReport.ItemId);
 
-            Assert.AreEqual(381121, repo.SelectedReport.ProdTeam.Recipe.Production.ProdItem.RecipeId);
+            Assert.AreEqual(381121, repo.SelectedReport.RecipeId);
 
             Assert.AreEqual(381121, repo.SelectedReport.Recipe);
             Assert.AreEqual(100, repo.SelectedReport.ProdTeam.Recipe.Production.ProdItem.Line[1]);
@@ -134,7 +128,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         public void TestProdProc()
         {
 
-            Assert.AreEqual(DateTime.Parse("15:00:00"), repo.SelectedReport.ProdTeam.PPRepo[0].ProdEnd);
+            Assert.AreEqual(DateTime.Parse("15:00:00"), repo.SelectedReport.ProdTeam.PPRepo[0].ProcEnd);
             Assert.AreEqual(p1.Reason, repo.SelectedReport.ProdTeam.PPRepo[0].Reason);
             Assert.AreEqual(p2.DowntimeDuration(), repo.SelectedReport.ProdTeam.PPRepo[1].DowntimeDuration());
 

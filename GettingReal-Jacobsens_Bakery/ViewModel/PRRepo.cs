@@ -13,8 +13,8 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
     public class PRRepo : INotifyPropertyChanged
     {
         private Efficiency calculator = new Efficiency();        
-        private PRDatahandler PRDatahandler = new PRDatahandler();
-        private ItemRepo itemRepo = new ItemRepo();
+        public PRDatahandler PRDatahandler = new PRDatahandler();
+        public ItemRepo ItemRepo = new ItemRepo();
         public ObservableCollection<ProductionReport> ReportRepo { get; set; } = new ObservableCollection<ProductionReport>();
 
         private ProductionReport _selectedReport;
@@ -29,7 +29,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         }
         public PRRepo()
         {
-            itemRepo.LoadRepo();
+            ItemRepo.LoadRepo();
             LoadReports();
             MatchItems();
         }
@@ -48,7 +48,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
         {
             try
             {
-                activeReport.RecipeId = itemRepo.FindItem(activeReport.ItemId).RecipeId;
+                activeReport.RecipeId = ItemRepo.FindItem(activeReport.ItemId).RecipeId;
             }
             catch (NullReferenceException ex)
             {
@@ -61,7 +61,7 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             {
                 if (report.ItemId != 0)
                 {
-                    report.RecipeId = itemRepo.FindItem(report.ItemId).RecipeId;
+                    report.RecipeId = ItemRepo.FindItem(report.ItemId).RecipeId;
 
 
                 }
@@ -75,14 +75,14 @@ namespace GettingReal_Jacobsens_Bakery.ViewModel
             SelectedReport = newReport;
         }
 
-        //public Item GetItem(int itemId)
-        //{
-        //    Item item = calculator.ItemRepo.FindItem(itemId);
-        //    if (item != null)
-        //        return item;
-        //    else
-        //        return null;
-        //}
+        public Item GetItem(int itemId)
+        {
+            Item item = ItemRepo.FindItem(itemId);
+            if (item != null)
+                return item;
+            else
+                return null;
+        }
 
         public void SaveReports()
         {

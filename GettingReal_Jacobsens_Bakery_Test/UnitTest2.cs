@@ -31,21 +31,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         }
 
         [TestMethod]
-        public void TestSave()
-        {
-            repo.SaveRepo();
-            Assert.AreEqual(true, File.Exists("ItemRepo.txt"));
-        }
-
-        [TestMethod]
-        public void TestNamedSave()
-        {
-            repo.SaveRepo("Test1.txt");
-            Assert.AreEqual(true, File.Exists("Test1.txt"));
-        }
-
-        [TestMethod]
-        public void TestLoad()
+        public void TestSaveLoad()
         {
             repo.SaveRepo();
             LoadedRepo = new ItemRepo();
@@ -58,7 +44,7 @@ namespace GettingReal_Jacobsens_Bakery_Test
         }
 
         [TestMethod]
-        public void TestNamedLoad()
+        public void TestNamedSaveLoad()
         {
             repo.SaveRepo("Test1.txt");
             LoadedRepo = new ItemRepo();
