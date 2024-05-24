@@ -38,34 +38,16 @@ namespace GettingReal_Jacobsens_Bakery.View
             //activeProductionReport.ProdTeam.CalculateTotalProcessDowntime();
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {   // Needs to check all information boxes for invalids/missing,
-            // then send signature window whether it needs 1 or 2 signees
-
-        }
-
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {   // Close window and (maybe) abandon information,
-            // should have a confirmation window if any data has been entered!
+            // should have a confirmation window if so!
+            // When that's implemented, have a save button
             Close();
-            // CHECK NOTES ABOVE!!
         }
-
-        private void cbTeam_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   // Assign from Team enums
-
-        }
-
-        private void cbLine_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   // Assign from Line enums
-
-        }
-
 
         private void chkWeightCheck_Checked(object sender, RoutedEventArgs e)
         {   // Wasn't needed often, so for MVP we run this naïve and never require it,
-            // but do note it in our final information dump
-
+            // but should be noted in our final information dump
         }
 
 

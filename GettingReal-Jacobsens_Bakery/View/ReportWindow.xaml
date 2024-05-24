@@ -21,31 +21,24 @@
                       Text="{Binding Team, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                       Height="40" Width="160" Margin="20,20,0,0" 
                       HorizontalAlignment="Left" VerticalAlignment="Top" 
-                      FontSize="24" FontFamily="Bahnschrift Light" 
-                      SelectionChanged="cbTeam_SelectionChanged"/>
+                      FontSize="24" FontFamily="Bahnschrift Light"/>
             <ComboBox x:Name="cbLine" 
                       Text="{Binding Line, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                       Height="40" Width="160" Margin="0,20,0,0" 
                       HorizontalAlignment="Center" VerticalAlignment="Top" 
-                      FontSize="24" FontFamily="Bahnschrift Light" 
-                      SelectionChanged="cbLine_SelectionChanged"/>
+                      FontSize="24" FontFamily="Bahnschrift Light"/>
             <TextBox x:Name="tbPOrder" Text="{Binding ProdOrderId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                     Height="40" Width="160" Margin="0,20,20,0" TextWrapping="Wrap" 
+                     Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
             <TextBox x:Name="tbWareNum" Text="{Binding ItemId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                     Height="40" Width="160" Margin="0,80,420,0" TextWrapping="Wrap" 
-                     HorizontalAlignment="Right" VerticalAlignment="Top" 
+                     Height="40" Width="160" Margin="0,80,0,0" TextWrapping="Wrap" 
+                     HorizontalAlignment="Center" VerticalAlignment="Top" 
                      FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24" TextChanged="tbWareNum_TextChanged"/>
             <Label x:Name="lblRecipeNum" Content="{Binding RecipeId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
-                   Height="40" Width="160" Margin="0,80,0,0" 
-                   HorizontalAlignment="Center" VerticalAlignment="Top" 
+                   Height="40" Width="160" Margin="420,80,0,0" 
+                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                    FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="24"/>
-            <Button x:Name="btnProcess" Content="Forløb" Height="40" Width="160" 
-                    Margin="420,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    Click="btnProcess_Click" 
-                    FontSize="20" FontFamily="Bahnschrift Light" 
-                    BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
             <TextBox x:Name="tbCrumbles" Text="{Binding Crumbles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Height="40" Width="160" Margin="20,140,0,0" TextWrapping="Wrap" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" 
@@ -66,13 +59,13 @@
                    HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
             <Label Content="P.Ordre" 
                    Height="20" Width="160"
-                   HorizontalAlignment="Left" Margin="420,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+                   HorizontalAlignment="Left" Margin="20,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
             <Label Content="Vare nr." 
                    Height="20" Width="160"
-                   HorizontalAlignment="Left" Margin="20,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+                   HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
             <Label Content="Sortiment nr." 
                    Height="20" Width="160"
-                   HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
+                   HorizontalAlignment="Left" Margin="420,66,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
             <Label Content="" 
                    Height="20" Width="160"
                    HorizontalAlignment="Left" Margin="420,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="10"/>
@@ -143,8 +136,9 @@
         <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#FFDDDDED">
             <Button x:Name="btnSave" Content="Gem rapport" Height="40" Width="150" 
                     Margin="275,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                    Click="btnSave_Click" FontSize="20" FontFamily="Bahnschrift Light" 
-                    BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
+                    FontSize="20" FontFamily="Bahnschrift Light" 
+                    BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"
+                    IsEnabled="False" Visibility="Collapsed"/>
             <Button x:Name="btnBack" Content="Tilbage" Height="40" Width="150" 
                     Margin="440,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                     Click="btnBack_Click" FontSize="20" FontFamily="Bahnschrift Light" 
@@ -162,6 +156,11 @@
                     </TransformGroup>
                 </CheckBox.RenderTransform>
             </CheckBox>
+            <Button x:Name="btnProcess" Content="Forløb" Height="40" Width="160" 
+                    Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Click="btnProcess_Click" 
+                    FontSize="20" FontFamily="Bahnschrift Light" 
+                    BorderBrush="#FF15151D" Background="#FFE7E7F3" Foreground="#FF545461"/>
 
         </Grid>
 

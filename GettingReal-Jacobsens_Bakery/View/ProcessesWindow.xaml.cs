@@ -79,7 +79,7 @@ namespace GettingReal_Jacobsens_Bakery.View
 
         private void btnSetEnd_Click(object sender, RoutedEventArgs e)
         {
-            pr.SelectedProcess.ProcStartFormatted = TimeNow();
+            pr.SelectedProcess.ProcEndFormatted = TimeNow();
         }
 
         private void btnSaveAndBack_Click(object sender, RoutedEventArgs e)
