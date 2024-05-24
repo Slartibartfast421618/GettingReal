@@ -105,14 +105,14 @@
             <Label Content="Bemærkning" 
                    Height="25" Width="90" Margin="210,0,0,34" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                    FontSize="12" FontFamily="Segoe UI" FontStyle="Italic" Foreground="#FF545461"/>
-            <TextBox x:Name="tbReason" TextWrapping="Wrap" TextAlignment="Left" 
-                     Text="{Binding SelectedProcess.Reason, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                     Width="360" Height="30" Margin="210,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                     FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbReason_TextChanged"/>
             <ComboBox x:Name="cbReason" 
                       Text="{Binding ElementName=tbReason, Path=Text, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
                       Width="380" Height="30" Margin="210,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                       FontSize="16" FontFamily="Bahnschrift Light" SelectionChanged="cbReason_SelectionChanged"/>
+            <TextBox x:Name="tbReason" TextWrapping="Wrap" TextAlignment="Left" 
+                     Text="{Binding SelectedProcess.Reason, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                     Width="360" Height="30" Margin="210,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                     FontSize="24" FontFamily="Bahnschrift Light" TextChanged="tbReason_TextChanged"/>
         </Grid>
 
         <Grid Height="60" Width="600" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
